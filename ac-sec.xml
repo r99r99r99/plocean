@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:beans="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+           http://www.springframework.org/schema/security
+           http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<global-method-security   >
+		<expression-handler ref="defaultExpHandler"/>
+		</global-method-security>
+	<beans:bean id="defaultExpHandler" class="org.springframework.security.web.access.expression.DefaultWebSecurityExpressionHandler"/>
+
+	<http pattern="/css/**" security="none" />
+	<http pattern="/js/**" security="none" />
+	<http pattern="/common/**" security="none" />
+	<http pattern="/login.do" security="none"/>
+	<http pattern="/images/**" security="none"/>
+	<http pattern="/bootstrap/**" security="none"/>
+	
+	<http pattern="/page-css/**" security="none" />
+	<http pattern="/page-js/**" security="none" />
+	<http pattern="/page-common/**" security="none" />
+	<http pattern="/page-images/**" security="none"/>
+
+	<!-- <http  disable-url-rewriting="true" use-expressions="true"  entry-point-ref="authenticationProcessingFilterEntryPoint" access-denied-page="/common/403.jsp">
+		<intercept-url pattern="/**" access="isAuthenticated()"  />
+		<logout delete-cookies="JSESSIONID" invalidate-session="true" logout-success-url="" logout-url="" />
+		<custom-filter ref="loginFilter" position="FORM_LOGIN_FILTER"  />
+		<custom-filter ref="myFilter" before="FILTER_SECURITY_INTERCEPTOR" />
+		<session-management   invalid-session-url="/login.do" session-authentication-error-url="/login.do?error=existuser">
+			<concurrency-control expired-url="/login.do"   max-sessions="1" error-if-maximum-exceeded="true"  />
+		</session-management>
+	</http> -->
+
+
+<!-- 登录验证器 -->  
+    <!-- <beans:bean id="loginFilter"  
+        class="com.sdocean.security.MyUsernamePasswordAuthenticationFilter">  
+        处理登录的action  
+        <beans:property name="filterProcessesUrl" value="/j_spring_security_check"></beans:property>  
+                验证成功后的处理  
+        <beans:property name="authenticationSuccessHandler" ref="loginLogAuthenticationSuccessHandler"></beans:property>  
+                验证失败后的处理  
+        <beans:property name="authenticationFailureHandler" ref="simpleUrlAuthenticationFailureHandler"></beans:property>  
+        <beans:property name="authenticationManager" ref="myAuthenticationManager"></beans:property>  
+        注入DAO为了查询相应的用户  
+        <beans:property name="usersManager" ref="usersManager"></beans:property> 
+        保存登录日志 
+        <beans:property name="loginLogService" ref="loginLogService"></beans:property>  
+    </beans:bean>   -->
+    <beans:bean id="loginLogAuthenticationSuccessHandler"  
+        class="org.springframework.security.web.authentication.SavedRequestAwareAuthenticationSuccessHandler">  
+        <beans:property name="defaultTargetUrl" value="/index.do"></beans:property>  
+    </beans:bean>  
+    <beans:bean id="simpleUrlAuthenticationFailureHandler"  
+        class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">  
+        <!-- 可以配置相应的跳转方式。属性forwardToDestination为true采用forward false为sendRedirect -->  
+        <beans:property name="defaultFailureUrl" value="/login.do?error=authfailure"></beans:property>  
+    </beans:bean>
+
+
+<!-- 未登录的切入点 -->  
+    <beans:bean id="authenticationProcessingFilterEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">  
+        <beans:property name="loginFormUrl" value="/login.do?error=noLogin"></beans:property>  
+    </beans:bean>
+</beans:beans>

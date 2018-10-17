@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:util="http://www.springframework.org/schema/util" 
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+					   http://www.springframework.org/schema/util  http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-autowire="byName">
+	
+	<bean id="configProperties" class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+		 <property name="locations">
+			<list>
+			<value>classpath:config.properties</value>
+			</list>
+		</property>
+	</bean>
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PreferencesPlaceholderConfigurer">
+	 	<property name="properties" ref="configProperties"/>
+	</bean> 
+	
+	
+	
+	<bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl">
+		<property name="host" value="smtp.163.com" />
+		<property name="port" value="25" />
+		<property name="username" value="haicheng_admin@163.com" />
+		<property name="password" value="haicheng" />
+		<property name="javaMailProperties">
+			<props>
+				<prop key="mail.smtp.auth">true</prop>
+			</props>
+		</property>
+	</bean>
+
+	<bean id="mailMessage" class="org.springframework.mail.SimpleMailMessage">
+		<property name="from">
+			<value>haicheng_admin@163.com</value>
+		</property>
+		<property name="subject">
+			<value>参数报警</value>
+		</property>
+	</bean>
+
+</beans>
