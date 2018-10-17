@@ -12,7 +12,7 @@ var lay;
 var coor;
 var url_i,format,version,tiled_i,styles_i,transparent,layers,code;
 //加入地图纠偏数据
-var offsetX = 600;
+var offsetX = 0;
 var offsetY = 0; 
 var maxLevel ;
 var sclist;
@@ -21,20 +21,303 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	$http.defaults.headers.post['Content-Type'] = 'application/json;charset=utf-8';  
 	$http.defaults.headers.post['Accept'] = 'application/json, text/javascript, */*; q=0.01';  
 	$http.defaults.headers.post['X-Requested-With'] = 'XMLHttpRequest';
+	//地图纠偏方法
+	$scope.updateXY = function(X,Y,EPSGDATA,EXPGMAP){
+		var before = ol.proj.transform([X,Y],EPSGDATA,EXPGMAP);
+		var after = [before[0]+offsetX,before[1]+offsetY];
+		return after;
+	};
+	//读取地图的配置信息,并根据配置信息加载地图
+	$scope.getMapConfig=function(){
+		var mapData = "";
+		$http({
+			method:'POST',
+			url:'getMapConfigure.do',
+			params:mapData})
+			.success(function(response){
+				url_i=response.url;
+				format=response.format;
+				version=response.version;
+				tiled_i=response.tiled;
+				styles_i=response.styles;
+				transparent=response.transparent;
+				layers=response.layers;
+				code=response.code;
+				mzoom=response.initZoom;
+				maxz=response.maxZoom;
+				minz=response.minZoom;
+				$scope.showMap();
+				$scope.updateStationStatus();
+				
+			});
+	};
+	//展示地图
+	$scope.showMap=function(){
+		
+		var projection = new ol.proj.Projection({
+			code: 'EPSG:4326',
+			units: 'm',
+			axisOrientation: 'neu',
+			global: false
+		});
+		var resolutions = [];
+	    for(var i=0; i<19; i++){
+	        resolutions[i] = Math.pow(2, 18-i);
+	    }
+	    var tilegrid  = new ol.tilegrid.TileGrid({
+	        origin: [0,0],
+	        resolutions: resolutions
+	    });
+	    
+	     ////自定义地图
+	    ///自定义地图
+	    var format = 'image/png';
+	    
+	    var googleMapLayer = new ol.layer.Tile({  
+            source: new ol.source.XYZ({  
+                url: 'http://www.google.cn/maps/vt/pb=!1m4!1m3!1i{z}!2i{x}!3i{y}!2m3!1e0!2sm!3i380072576!3m8!2szh-CN!3scn!5e1105!12m4!1e68!2m2!1sset!2sRoadmap!4e0!5m1!1e0'  
+            })  
+        }); 
+	    
+	    var tiled = new ol.layer.Tile({
+	         visible: true,
+	         source: new ol.source.TileWMS({
+	           url: url_i,
+	           
+	           params: {'FORMAT': format, 
+	                    'VERSION': version,
+	                    tiled: tiled_i,
+	                 STYLES: styles_i,
+	                 transparent:transparent,
+	                 LAYERS: layers
+	           }
+	         })
+	       });
+	    
+	    //显示鼠标的位置
+	    var mousePositionControl = new ol.control.MousePosition({
+	    	/*projection:"EPSG:4326",
+	        className: 'custom-mouse-position',
+	        target: document.getElementById('location'),
+	        coordinateFormat: ol.coordinate.toStringHDMS,
+	        undefinedHTML: '&nbsp;'*/
+	    	projection:"EPSG:4326",
+		    className: 'custom-mouse-position',
+		    target: document.getElementById('location'),
+		    coordinateFormat: ol.coordinate.createStringXY(5),
+		    undefinedHTML: '&nbsp;'
+	      });
+	    map = new ol.Map({
+	    	controls: ol.control.defaults({
+		           attribution: false
+		         }).extend([mousePositionControl]),
+	        target: 'map',
+	        layers: [googleMapLayer],
+	        view: new ol.View({
+	           // center:  coor,
+	            zoom:  mzoom,
+	            minZoom: minz,  
+	            maxZoom: maxz  
+	        })
+	    });
+	    var view = map.getView();
+		view.setCenter(coor);
+	  //点击站点后的弹出框
+	    element= document.getElementById('popup');
+	};
+	
+	$scope.getMapConfig();
+	
+	//展示出站点的列表
+	$scope.showlayersControl=function(){
+   	 var lay = document.getElementById("layersControl");
+   	 if(lay.style.display=="block"){
+   		 lay.style.display="none"
+   	 }else{
+   		 lay.style.display="block";
+   	 }
+    };
+    $scope.showlayersControl();
+    
     //在地图上展示站点的状态
+    $scope.showStationStatus=function(station){
+    	
+    	
+    	var stationContent = new Array();
+    	stationContent.push('<div class="firstBoxIn">');
+    	stationContent.push('<div class="widget-title">');
+    	stationContent.push('<p class="label">');
+    	stationContent.push(station.collectTime);
+    	stationContent.push('</p>');
+    	stationContent.push('<h5>设备状态</h5>');
+    	stationContent.push('</div>');
+    	stationContent.push('<table class="table table-hover table-bordered table-responsive">');
+    	stationContent.push('<tr>');
+    	stationContent.push('<td class="table_blue_zi">供电电压</td>');
+    	stationContent.push('<td>');
+    	stationContent.push(station.bv);
+    	stationContent.push('</td>');
+    	stationContent.push('</tr>');
+    	stationContent.push('<tr>');
+    	stationContent.push('<td class="table_blue_zi">面板温度</td>');
+    	stationContent.push('<td>');
+    	stationContent.push(station.pt);
+    	stationContent.push('</td>');
+    	stationContent.push('</tr>');
+    	stationContent.push('<tr>');
+    	stationContent.push('<td class="table_blue_zi">网络状况</td>');
+    	stationContent.push('<td>');
+    	stationContent.push(station.ic);
+    	stationContent.push('</td>');
+    	stationContent.push('</tr>');
+    	stationContent.push('</table>');
+    	stationContent.push('<div class="widget-title">');
+    	stationContent.push('<p class="label">');
+    	stationContent.push(station.collectTime);
+    	stationContent.push('</p>');
+    	stationContent.push('<h5>位置信息</h5>');
+    	stationContent.push('</div>');
+    	stationContent.push('<table class="table table-hover table-bordered table-responsive">');
+    	stationContent.push('<tr>');
+    	stationContent.push('<td>东经:');
+    	stationContent.push(station.longitude);
+    	stationContent.push('</td>');
+    	stationContent.push('<td>北纬:');
+    	stationContent.push(station.latitude);
+    	stationContent.push('</td>');
+    	stationContent.push('</tr>');
+    	stationContent.push('<tr>');
+    	stationContent.push('<td class="table_blue_zi">偏移</td>');
+    	stationContent.push('<td>');
+    	stationContent.push(station.distance);
+    	stationContent.push('米</td>');
+    	stationContent.push('</tr>');
+    	stationContent.push('</table>');
+    	stationContent.push('</div>');
+    	$("#status").html("");
+		$("#status").html(stationContent.join(""));
+		//跳转到该站点为中心点
+		 coor = $scope.updateXY(station.longitude,station.latitude,'EPSG:4326', code);
+    	 var view = map.getView();
+ 		 view.setCenter(coor);
+ 		 
+      		
+      	//展示该站点的复选框
+   		element = document.getElementById('popup');
+   		$(element).popover('destroy');
+   		var coordinates = ol.proj.transform([station.longitude,station.latitude], 'EPSG:4326', code);
+   		popup = null;
+   		popup = new ol.Overlay({
+				element: element,
+				positioning: 'bottom-center',
+				stopEvent: false,
+				offset: [110, -80]
+			});
+   		
+   		popup.setPosition(coordinates);
+   		
+			
+			$(element).popover({
+				'placement': 'right',
+				'title':station.title,
+				'html': true,
+				'content':'<table class="table table-hover table-bordered table-responsive" style="font-size: 12px">'
+						+'<tr>'
+						+'<td colspan="2" style="text-align:center;">站点状态</td>'
+						+'</tr>'
+						+'<tr>'
+						+'<td class="firstTableTd">东经:'+(station.latitude).toFixed(5)+'°</td>'    
+						+'<td class="firstTableTd">北纬:'+(station.longitude).toFixed(5)+'°</td>'
+						+'</tr>'
+						+'<tr >'
+						+'<td class="firstTableTd">偏移</td>'
+						+'<td class="firstTableTd">'+(station.distance).toFixed(2)+'米</td>'
+						+'</tr>'
+						+'</table>'
+			});
+			$(element).popover('show');
+			map.addOverlay(popup);
+ 		 
+    	/*//从站点列表中读取该站点的连接状况,以及未知信息
+    	var status ;
+    	angular.forEach($scope.stations, function(st){
+    		if(st.stationId==station.stationId){
+    			status = st;
+    		}
+    	});
+    	//从站点列表中读取该站点的连接状况,以及未知信息  ----end
+    	
+    	 coor = $scope.updateXY(station.longitude,station.latitude,'EPSG:4326', code);
+    	 var view = map.getView();
+ 		 view.setCenter(coor);
+       		$(elementclick).popover('destroy');
+       		
+       	//展示该站点的复选框
+    		element = document.getElementById('popup');
+    		$(element).popover('destroy');
+    		var coordinates = ol.proj.transform([station.longitude,station.latitude], 'EPSG:4326', code);
+    		popup = null;
+    		popup = new ol.Overlay({
+				element: element,
+				positioning: 'bottom-center',
+				stopEvent: false,
+				offset: [110, -140]
+			});
+    		
+    		popup.setPosition(coordinates);
+    		
+			
+			$(element).popover({
+				'placement': 'right',
+				'title':station.title,
+				'html': true,
+				'content':'<table class="table table-hover table-bordered table-responsive" style="font-size: 12px">'
+						+'<tr >'
+						+'<td colspan="2" style="text-align:center;line-height: 10px;" >设备</td>'
+						+'</tr>'
+						+'<tr >'
+						+'<td class="firstTableTd">供电电压</td>'
+						+'<td class="firstTableTd">'+status.bv+'</td>'
+						+'</tr >'
+						+'<tr >'
+						+'<td class="firstTableTd">面板温度</td>'
+						+'<td class="firstTableTd">'+status.pt+'</td>'
+						+'</tr>'
+						+'<tr >'
+						+'<td class="firstTableTd">网络状况</td>'
+						+'<td class="firstTableTd">'+status.ic+'</td>'
+						+'</tr>'
+						+'<tr>'
+						+'<td colspan="2" style="text-align:center;">位置</td>'
+						+'</tr>'
+						+'<tr>'
+						+'<td class="firstTableTd">东经:'+(status.latitude).toFixed(5)+'°</td>'    
+						+'<td class="firstTableTd">北纬:'+(status.longitude).toFixed(5)+'°</td>'
+						+'</tr>'
+						+'<tr >'
+						+'<td class="firstTableTd">偏移</td>'
+						+'<td class="firstTableTd">'+(status.distance).toFixed(2)+'米</td>'
+						+'</tr>'
+						+'</table>'
+			});
+			$(element).popover('show');
+			map.addOverlay(popup);*/
+    }
     
   //展开站点详情列表
     $scope.showStationDetail=function(station){
     	$scope.station = station;
     	$scope.showLastData(station);
-    	//$scope.showStationStatus(station);
+    	$scope.showStationStatus(station);
      };
      
      //关闭站点详情列表
      $scope.closeStationLayers=function(){
+    	 
      	//关闭地图上展示的站点详细信息
       	$(element).popover('destroy');
      }
+     
      
      //得到站点的实时数据
      $scope.showLastData=function(station){
@@ -128,11 +411,68 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 				 var station = $scope.stations[0];
 				 $scope.station = station;
 				 $scope.showLastData(station);
-				 //$scope.showStationStatus(station);
+				 $scope.showStationStatus(station);
+				 coor = $scope.updateXY(station.longitude,station.latitude,'EPSG:4326', code);
+				 var view = map.getView();
+	 		     view.setCenter(coor);
+				 map.removeLayer(vectorLayer);
+				 var startMarkers = new Array();
+				   angular.forEach(stations, function(station){
+				    	 var startMarker = new ol.Feature({
+				    		stationId:station.id,
+				 	        type: station.ifConnIcon,
+				 	        rainfall: 500,
+				 	        //geometry: new ol.geom.Point(ol.proj.transform([station.longitude,station.latitude], 'EPSG:4326', code))
+				    	 	geometry: new ol.geom.Point($scope.updateXY(station.longitude,station.latitude,'EPSG:4326', code))
+				    	 });
+				    	 startMarkers.push(startMarker);
+				     });
+				   
+				   vectorLayer = new ol.layer.Vector({
+				        source: new ol.source.Vector({
+				          features: startMarkers
+				        }),
+				        style: function(feature) {
+					        var icon = 	 new ol.style.Style({
+						          		image: new ol.style.Icon({
+							            anchor: [0, 15],
+							           anchorXUnits: 'pixels',
+							           anchorYUnits: 'pixels',
+							           /*anchorXUnits: 'fraction',
+							           anchorYUnits: 'pixels',*/
+							            src: 'images/station/icon/'+feature.get('type')
+							          })
+					        })
+					        return icon;
+				        }
 				 }); 
+				   
+					map.on('click', function(evt) {
+						var feature = map.forEachFeatureAtPixel(evt.pixel,
+								function(feature) {
+							return feature;
+						});
+						if (feature) {
+							//获得点击的站点的id
+							var spam={
+									id:feature.H.stationId
+							};
+							 $http({
+					 			 method:'POST',
+					 			 url:'getStationStatusById.do',
+					 			 params:spam})
+					 			 .success(function(response){
+					 				$scope.showStationDetail(response);
+					 			 })
+					 			 
+						} else {  //当点击地图的空白区域时,关闭所有弹出框
+							$scope.closeStationLayers();
+						}
+					});
+					map.addLayer(vectorLayer);  
+			 });
 	     
    }
-   $scope.updateStationStatus();
    $scope.updateStationStatusintervalId();
    
    //获得站点的水质等级趋势  
@@ -166,60 +506,9 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	   var begin = yearb+'-'+monthb+'-'+dayb;
 	   var end = yeare+'-'+monthe+'-'+daye;
 	   $scope.upd(station,begin,end);
-	   $scope.getWarn(station,begin,end);
 };
    
-   //查询该站点，一段时间内的预警告警信息
-	$scope.getWarn=function(station,beginDate,endDate){
-		 var sparams = {
-				 wpId:station.id,
-				 beginDate:beginDate,
-				 endDate:endDate 
-		 };
-		 $http({
-			 method:'POST',
-			 url:'getWarnValueRows.do',
-			 params:sparams})
-			 .success(function(res){
-				 var warnConcent = new Array();
-				 warnConcent.push('<table class="table table-hover table-bordered table-responsive">');
-				 //生成表头部分
-				 warnConcent.push('<thead>');
-				 warnConcent.push('<tr>');
-				 warnConcent.push('<th class="table_blue_zi">类型</th>');
-				 warnConcent.push('<th class="table_blue_zi">设备</th>');
-				 warnConcent.push('<th class="table_blue_zi">参数</th>');
-				 warnConcent.push('<th class="table_blue_zi">测定值</th>');
-				 warnConcent.push('</tr>');
-				 warnConcent.push('</thead>');
-				 warnConcent.push('<tbody>');
-				 for(var m in res){
-					 warnConcent.push('<tr>');
-					 warnConcent.push('<td class="table_blue_zi">');
-					 warnConcent.push(res[m].typeName);
-					 warnConcent.push('</td>');
-					 warnConcent.push('<td class="table_blue_zi">');
-					 warnConcent.push(res[m].deviceName);
-					 warnConcent.push('</td>');
-					 warnConcent.push('<td class="table_blue_zi">');
-					 warnConcent.push(res[m].indicatorName);
-					 warnConcent.push('</td>');
-					 warnConcent.push('<td class="table_blue_zi">');
-					 warnConcent.push(res[m].value);
-					 if(res[m].unitName!=null){
-						 warnConcent.push(res[m].unitName);
-					 }
-					 warnConcent.push('</td>');
-					 warnConcent.push('</tr>');
-				 }
-				 warnConcent.push('</tbody>');
-				 warnConcent.push('</table>');
-				 
-				 $("#warnBox").html("");
- 			     $("#warnBox").html(warnConcent.join(""));
-				 
-			 });
-	};
+   
    //从后台读取折线图数据
    $scope.upd=function(station,beginDate,endDate){
 	   $scope.param={
@@ -241,6 +530,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 			 url:'showStat.do',
 			 params:sparams})
 			 .success(function(res){
+				 console.log(res);
 				 loadPie(res);
 			 });
    };

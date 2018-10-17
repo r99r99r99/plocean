@@ -103,7 +103,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				  </div>
 				    <!-- 以下展示的是数值类型 -->
 				    <div class="container-fluid">
-						<div id="container" style="height:65vh;"></div>
+						<div id="standcontainer" style="height:35vh;"></div>
+						<div id="periodcontainer" style="height:35vh;"></div>
 					</div>
 		    	</div>
 		    </div>

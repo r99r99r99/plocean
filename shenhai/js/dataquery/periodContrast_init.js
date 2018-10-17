@@ -166,17 +166,17 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	   //执行查询语句
 		$scope.query=function(){
 			 $(".scbtn").attr('disabled',"true");
-			 var standAfterTime = $('#standAfterTime').val();
-			 var contrastAfterTime = $('#contrastAfterTime').val();
-			 var contrastBeforeTime = $('#contrastBeforeTime').val();
-			 var standBeforeTime = $('#standBeforeTime').val();
-			 if(ifBeginLaterEnd(standBeforeTime,standAfterTime)){
+			 var endDate = $('#standAfterTime').val();
+			 var startDate = $('#standBeforeTime').val();
+			 var pendDate = $('#contrastAfterTime').val();
+			 var pstartDate = $('#contrastBeforeTime').val();
+			 if(ifBeginLaterEnd(startDate,endDate)){
 					$(".btn-primary").removeAttr("disabled");
 					return;
 			 };
-			 if(ifBeginLaterEnd(contrastBeforeTime,contrastAfterTime)){
-				 $(".btn-primary").removeAttr("disabled");
-				 return;
+			 if(ifBeginLaterEnd(pstartDate,pendDate)){
+					$(".btn-primary").removeAttr("disabled");
+					return;
 			 };
 			if($scope.u.indicatorIds==null||$scope.u.indicatorIds==""){
 				alert("请选择参数");
@@ -185,30 +185,47 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 			var indicatorIds = "0#0";
 			
 			angular.forEach($scope.u.indicatorIds, function ( item ) {
-				indicatorIds = item.id;
+				indicatorIds = indicatorIds +","+item.id;
 		    });
-			var queryParam = {
+			
+			$(".btn-primary").attr('disabled',"true");
+			//查询标准数据折线图
+			var standParam = {
 					stationId:stationid,
 					indicatorIds:indicatorIds,
-					standBeforeTime:standBeforeTime,
-					standAfterTime:standAfterTime,
-					contrastBeforeTime:contrastBeforeTime,
-					contrastAfterTime:contrastAfterTime
+					beginDate:startDate,
+					endDate:endDate
 			};
-			$(".btn-primary").attr('disabled',"true");
 			 $http({
 				 method:'POST',
 				 url:'graphShow4echarts.do',
-				 params:queryParam}) 
+				 params:standParam}) 
 				 .success(function(response){
 					 console.log(response);
 					 $(".scbtn").removeAttr("disabled");
-					 showData(response);
+					 showData('standcontainer',response);
 			 });
+			 
+			 //查询对比数据接线图
+			 var periodParam = {
+						stationId:stationid,
+						indicatorIds:indicatorIds,
+						beginDate:pstartDate,
+						endDate:pendDate
+				};
+				 $http({
+					 method:'POST',
+					 url:'graphShow4echarts.do',
+					 params:periodParam}) 
+					 .success(function(response){
+						 console.log(response);
+						 $(".scbtn").removeAttr("disabled");
+						 showData('periodcontainer',response);
+				 });
 		};
 });
 
-function showData(res){
+function showData(ele,res){
 	var yaxs = [];
 	var yax = 0;
 	var series = new Array();
@@ -253,7 +270,7 @@ function showData(res){
 		
 		series.push(servie);
 	});
-	var chart = Highcharts.chart('container', {
+	var chart = Highcharts.chart(ele, {
 		 plotOptions:{
 	            series:{
 	                turboThreshold:1000000//set it to a larger threshold, it is by default to 1000

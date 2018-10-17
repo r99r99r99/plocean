@@ -154,7 +154,7 @@
       </div>
     </div>
   </div>
-  <div class="loginCen" style="margin-top: 55px;">
+  <div class="loginCen" style="margin-top: 85px;">
     <div class="login-center">
       <div class="loginCenter-moudle">
         <div class="loginCenter-moudleLeft" style="margin-right: 60px;"> &nbsp;</div>
