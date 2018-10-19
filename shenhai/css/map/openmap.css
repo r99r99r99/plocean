@@ -12,8 +12,7 @@
     height: 40vh;
     width:100%;
     border: 0px solid black;
-    margin-top:16px;
-    margin-left:5px;
+    margin-top:3px;
 }
 #popup {
     clear: both;
@@ -21,7 +20,7 @@
     width: 200px;
 }
         
-/*首页右侧实时数据样式开始*/
+/*棣栭〉鍙充晶瀹炴椂鏁版嵁鏍峰紡寮�濮�*/
 #databox {
 	width: 345px;
 	border-radius: 3px 3px 3px 3px;
@@ -31,7 +30,7 @@
 	color: #565656;
 	word-wrap: break-word;
 	font-family: Arial, sans-serif;
-	/*gss8 background  height 把行内样式加入这了position z-index right display删除*/
+	/*gss8 background  height 鎶婅鍐呮牱寮忓姞鍏ヨ繖浜唒osition z-index right display鍒犻櫎*/
 	/*height: 34px;*/
 	position: absolute;
 	background: #fff;
@@ -70,7 +69,7 @@
     color: rgb(255, 255, 255);
     line-height: 22px;
     font-size: 12px;
-    font-family: 微软雅黑;
+    font-family: 寰蒋闆呴粦;
     padding-left: 10px;
     background: rgb(42, 42, 43);
     margin: 0px;
@@ -122,7 +121,7 @@
     font-size: 14px;
     margin: 0;
 }
-/*首页右侧实时数据样式结束*/
+/*棣栭〉鍙充晶瀹炴椂鏁版嵁鏍峰紡缁撴潫*/
 
         #layersControl{  
              /*  background-color: rgb(255,255,255);  
@@ -130,7 +129,7 @@
               position:absolute;  
               z-index:555;  
               left:8px;  
-              top:30px;  
+              top:40px;  
               display:none;  
               width:150px;
           }  
@@ -189,7 +188,7 @@
           }  
           #layerbox_item .item, #layerbox_item .item span,#measureTool .item span{  
               display: inline-block;  
-              vertical-align: middle;  /*鍐呴儴鍥剧墖鐨勪綅缃�*/  
+              vertical-align: middle;  /*閸愬懘鍎撮崶鍓у閻ㄥ嫪缍呯純锟�*/  
           }  
           #layerbox_item .item {  
               height: 16px;  
@@ -220,7 +219,7 @@
               line-height: 25px;  
           }  
           .layersControl-closer:after {  
-              content: "鉁�";  
+              content: "閴侊拷";  
           }  
             
           .measureTool{  

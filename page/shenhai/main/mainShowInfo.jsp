@@ -11,77 +11,83 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <c:set var="ctx" value="${pageContext.request.contextPath}"/>
 	<head>
 		<meta charset="utf-8" />
-		<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
 		<title>${system.systemName }</title>
 		<meta name="keywords" content="入海污染源" />
-		
-		
-		<link rel="stylesheet" href="${ctx}/resources/openlayersv3.20.1/css/ol.css" type="text/css">
-		<script src="${ctx}/resources/openlayersv3.20.1/build/ol.js" type="text/javascript"></script>
 		<!-- basic styles -->
-<style>
-#treecontrol{  
-              background-color: rgb(255,255,255);  
-              border:1px solid #888888;  
-              position:absolute;  
-              z-index:555;  
-              left:20px;  
-              top:50px;  
-              width:245px;
-          }  
-</style>		
-		
 		
 	</head>
 
-<body ng-app="myApp" ng-controller="customersCtrl">
+	<body class="no-skin" ng-app="myApp" ng-controller="customersCtrl">
 		<%@ include file="../common/top.jsp" %>
-		<link href="<%=path %>/shenhai/css/map/openmap.css" rel="stylesheet"> 
+		<link rel="stylesheet" href="${ctx}/resources/openlayersv3.20.1/css/ol.css" type="text/css">
+		<script src="${ctx}/shenhai/js/common.js" type="text/javascript"></script>
 		<%@ include file="../common/textAngular.jsp" %>
-		
 		<link rel="stylesheet" href="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
 		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
 		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
 		<script src="${ctx}/shenhai/js/common.js" type="text/javascript"></script>
-		
-		
 		<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
 		
-		
-		<div id="content">
-			<div id="content-header">
-			    <div id="breadcrumb"> ${currMenu.pMenuName }
-			    	<a title="${currMenu.cMenuName }" class="tip-bottom"><i class="icon-home"></i> 
-			    	${currMenu.cMenuName }</a></div>
-		    </div>
-		    <div class="widget-contents nopadding">
-		    	<div class="container-fluid">
-		    		<ul class="seachform">
-					 <li><label>站点</label>
-						    <div class="vocation">
-							    <select  ng-model="u.stationId" class="form-control"
-	                              ng-change="changeStation()" 
-								  ng-options="option.id as option.title for option in stationList">
-								 </select>
-						    </div>
-					 </li>
-				    <li><label>开始时间</label>
-					    <div class="vocation">
-						    <input name="beginTime" ng-model="u.beginTime" id="beginTime" placeholder="开始时间" 
-						      type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  ng-change="" class="scinput">
-					    </div>
-				    </li>
-				     <li><label>结束时间</label>
-					    <div class="vocation">
-						    <input name="endTime" ng-model="u.endTime" id="endTime" placeholder="结束时间"  type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  class="scinput">
-					    </div>
-				    </li>
-				    <li><label>&nbsp;</label><input name="" type="button" class="btn btn-primary" ng-click="changeStation()()" value="查询"/></li>
-				    </ul>
-				    </div>
-					 <div  ui-grid="gridOptions" ui-grid-selection ui-grid-pagination ui-grid-exporter class="gridStyle" style="height:50vh;"></div>
-		    </div>
-		    
+		<div class="main-container ace-save-state" id="main-container">
+			<%@ include file="../common/left.jsp" %>
+			
+			
+			<div class="main-content">
+				<div class="main-content-inner">
+					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
+						<ul class="breadcrumb">
+							<li>
+								<i class="ace-icon fa fa-home home-icon"></i>
+								<a href="#">${currMenu.pMenuName }</a>
+							</li>
+
+							<li class="active">${currMenu.cMenuName }</li>
+						</ul><!-- /.breadcrumb -->
+					</div>
+
+					<div class="page-content">
+						<%@ include file="../common/setting.jsp" %>
+						<div class="row">
+							<div class="col-xs-12">
+								<!-- PAGE CONTENT BEGINS -->
+									<div class="row">
+										<div class="col-xs-12">
+											<ul class="seachform">
+												 <li><label>站点</label>
+													    <div class="vocation">
+														    <select  ng-model="u.stationId" class="form-control"
+								                              ng-change="changeStation()" 
+															  ng-options="option.id as option.title for option in stationList">
+															 </select>
+													    </div>
+												 </li>
+											    <li><label>开始时间</label>
+												    <div class="vocation">
+													    <input name="beginTime" ng-model="u.beginTime" id="beginTime" placeholder="开始时间" 
+													      type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  ng-change="" class="scinput">
+												    </div>
+											    </li>
+											     <li><label>结束时间</label>
+												    <div class="vocation">
+													    <input name="endTime" ng-model="u.endTime" id="endTime" placeholder="结束时间"  type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  class="scinput">
+												    </div>
+											    </li>
+											    <li><label>&nbsp;</label><input name="" type="button" class="btn btn-primary" ng-click="changeStation()()" value="查询"/></li>
+											 </ul>
+										     <div>
+												 <div  ui-grid="gridOptions" ui-grid-selection ui-grid-pagination ui-grid-exporter class="gridStyle" style="height:50vh;"></div>
+											</div>
+											
+										</div>
+									</div>
+								<!-- PAGE CONTENT ENDS -->
+							</div><!-- /.col -->
+						</div><!-- /.row -->
+					</div><!-- /.page-content -->
+				</div>
+			</div><!-- /.main-content -->
+			
+			<%@ include file="../common/footer.jsp" %>
 		</div>
 <script type="text/javascript">
 var count = 1;  
@@ -125,56 +131,51 @@ function removeOldFile(evt, id){
     }  
     return true;  
 } 
-</script>	
+</script>
+
 <script type="text/ng-template" id="popupTmpl.html">  
-<div class="widget-box">
-	<div class="widget-title">
-            <h4>
-	    ${currMenu.cMenuName }
-	    </h4> 
-    </div> 
-   <div class="widget-content nopadding">
+<div class="widget-box col-xs-12">
+	<div class="widget-header">
+		<span class="icon">
+			<i class="icon-align-justify"></i>
+		</span>
+		<h5>{{m.stationName }}</h5>
+	</div>
+	<div class="widget-body" style="padding-top:10px;padding-bottom: 10px;">
 		<form class="form-horizontal" id="myForm" role="form" name="myForm" enctype="multipart/form-data" method="post"  novalidate>
 			<input type="hidden" id="form-field-1" ng-model="m.id" />
 			<input type="hidden" id="form-field-1" ng-model="m.dis" />
 			<input type="hidden" id="form-field-1" ng-model="m.mtype" />
 
-			<div class="control-group">
-				<label class="control-label"> 站点 </label>
-
-				<div class="controls">
-							<select  ng-model="m.stationId" class="form-control"
+			
+			<div class="form-group">
+				<label class="col-sm-3 control-label no-padding-right"> 站点 :</label>
+				<div class="col-sm-9">
+					<select  ng-model="m.stationId" class="form-control"
                               ng-change="mchangeStation()" id="station" ng-disabled="m.dis"
 							  ng-options="option.id as option.title for option in mstationList">
 							 </select>
 				</div>
 			</div>
-
-
-			<div class="control-group">
-				<label class="control-label">  开始时间 </label>
-
-				<div class="controls">
-							  <input name="beginTime" ng-model="m.beginTime" id="mbeginTime" placeholder="开始时间"  ype="text" 
+			<div class="form-group">
+				<label class="col-sm-3 control-label no-padding-right">开始时间:</label>
+				<div class="col-sm-9">
+					<input name="beginTime" ng-model="m.beginTime" id="mbeginTime" placeholder="开始时间"  ype="text" 
                                 onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  class="scinput" required>
 				</div>
 			</div>
-
-			<div class="control-group">
-				<label class="control-label">  结束时间 </label>
-
-				<div class="controls">
-							  <input name="endTime" ng-model="m.endTime" id="mendTime" placeholder="结束时间"  ype="text" 
+			<div class="form-group">
+				<label class="col-sm-3 control-label no-padding-right">结束时间:</label>
+				<div class="col-sm-9">
+					<input name="endTime" ng-model="m.endTime" id="mendTime" placeholder="结束时间"  ype="text" 
                                 onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})"  class="scinput" required>
 				</div>
 			</div>
-	
-			<div class="control-group">
-				<label class="control-label"> 维护参数 </label>
+			<div class="form-group">
+				<label class="col-sm-3 control-label no-padding-right">维护参数:</label>
 				<input type="hidden" ng-model="station.deviceIds" />
-				<div class="controls">
-
-						<multi-select-tree data-input-model="indicatorTree" multi-select="true" ng-model="indicator" id="ids"
+				<div class="col-sm-9">
+					<multi-select-tree data-input-model="indicatorTree" multi-select="true" ng-model="indicator" id="ids"
                                    data-output-model="indicatorIds" data-default-label="请选择维护参数."
                                    data-callback="selectOnly1Or2(item, selectedItems)"
 								   data-switch-view-callback="switchViewCallback(scopeObj)"
@@ -183,12 +184,10 @@ function removeOldFile(evt, id){
 							</multi-select-tree>
 				</div>
 			</div>
-			
-
-			<div class="control-group">
-				<label class="control-label">  维修报告 </label>
-				<div class="controls">
-						<div id="newUpload2">  
+			<div class="form-group">
+				<label class="col-sm-3 control-label no-padding-right">维修报告:</label>
+				<div class="col-sm-9">
+					<div id="newUpload2">  
 								<ul>
 									<li ng-repeat="pic in pics">
 										<a href="${ctx }/exportMainFile.do?fileName={{pic.realName}}&filePath={{pic.pathName}}" >{{pic.realName}}</a>
@@ -198,13 +197,14 @@ function removeOldFile(evt, id){
 				</div>
 			</div>
 
-		</form>	
-    </div>
-</div>
+		</form>
+	</div>
+</div>		
 </script> 
-</body>
+
 <link rel="stylesheet" href="${ctx }/resources/zTree_s/css/metroStyle/metroStyle.css" type="text/css">
 <script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
 <script type="text/javascript" src="${ctx }/shenhai/js/main/mainShowInfo.js"></script>
+</body>
 </html>

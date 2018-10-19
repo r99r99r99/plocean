@@ -53,3 +53,20 @@ option{overflow:auto;}
     width: 1480px; 
     margin-left:30px;
 }
+/*seachform*/
+.seachform{ min-height:42px;margin-top:10px;}
+.seachform li{float:left; margin-right:15px;list-style: none;}
+.seachform li label{padding-right:10px; float:left; line-height:32px;}
+.scinput{width:150px; height:32px; line-height:32px; 
+         border-top:solid 1px #a7b5bc; border-left:solid 1px #a7b5bc; 
+         border-right:solid 1px #ced9df; border-bottom:solid 1px #ced9df; 
+         text-indent:10px;}
+.timeput{width:140px; height:32px; line-height:32px; 
+         border-top:solid 1px #a7b5bc; border-left:solid 1px #a7b5bc; 
+         border-right:solid 1px #ced9df; border-bottom:solid 1px #ced9df; 
+         text-indent:10px;}
+.scbtn{width:85px;height:35px; background:url(../../images/form/btnbg.png) no-repeat center; font-size:14px;font-weight:bold;color:#fff; cursor:pointer;border-radius:3px; behavior:url(js/pie.htc);}
+.nomarginbottom{
+	margin-bottom:0px !important;
+}
+

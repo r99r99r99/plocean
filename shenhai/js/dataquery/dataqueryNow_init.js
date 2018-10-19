@@ -130,13 +130,13 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 				 params:zparams})
 				 .success(function(res){
 					 var airContent = new Array();
-					 airContent.push('<div class="row-fluid">');	
+					 airContent.push('<div class="row">');	
 					 for(var p in res){
 						 var device = res[p];
-						 airContent.push('<div class="span12">');	
-						 airContent.push('<div class="widget-box  " style="height:300px">');
-							 airContent.push('<div class="widget-title">');
-							 	airContent.push('<h5 class="bigger lighter">');
+						 airContent.push('<div class="col-xs-12">');	
+						 airContent.push('<div class="widget-box" style="height:300px;background-color:#f9f9f9">');
+							 airContent.push('<div class="widget-header">');
+							 	airContent.push('<h5 class="widget-title">');
 								airContent.push('<i class="icon-table"></i>');
 								airContent.push(device.name);
 								airContent.push('<span id="collectTime_');
@@ -144,10 +144,10 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 								airContent.push('"></span>');
 								airContent.push('</h5>');
 							 airContent.push('</div>');	
-							 airContent.push('<div class="widget-content  noborder" style="height:auto;text-align: center;">');
+							 airContent.push('<div class="widget-body noborder nopadding" style="height:auto;text-align: center;">');
 							 	for(var m in device.indicators){
 							 		 var indicator = device.indicators[m];
-							 		 airContent.push('<div class="span2" style="min-width: 110px; max-width: 400px; height: 250px; margin: 0 auto" id="');
+							 		 airContent.push('<div class="col-xs-2" style="min-width: 110px; max-width: 400px; height: 250px; margin: 0 auto" id="');
 							 		 airContent.push(device.id);
 							 		 airContent.push('_');
 							 		 airContent.push(indicator.code);
@@ -190,7 +190,6 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 						 var indicators = device.MetaDatas;
 						 for(var n in indicators){
 							 var indicator = indicators[n];
-							 console.log(indicator);
 							 var hcharts = Highcharts.charts;
 							 var diid = device.deviceId+"_"+indicator.indicatorCode;
 							 for(var s in hcharts){
@@ -217,7 +216,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 					 //开始编写表格形式的内容
 					 var airContent = new Array();
 
-						airContent.push('<div class="row-fluid">');	
+						airContent.push('<div class="row">');	
 						//开始编写实时数据部分
 						var lastData = res.Datas;
 						for(var p in lastData){
@@ -227,15 +226,15 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 							if(lastTime == null){
 								lastTime = ' ';
 							}
-							airContent.push('<div class="span6">');	
+							airContent.push('<div class="col-xs-6">');	
 							airContent.push('<div class="widget-box">');
-							airContent.push('<div class="widget-title">');
-							airContent.push('<h5 class="bigger lighter">');
+							airContent.push('<div class="widget-header">');
+							airContent.push('<h5 class="widget-title">');
 							airContent.push('<i class="icon-table"></i>');
 							airContent.push(lastData[p].deviceName+'  更新时间：'+lastTime);
 							airContent.push('</h5>');
 							airContent.push('</div>');
-							airContent.push('<div class="widget-content nopadding">');
+							airContent.push('<div class="widget-body noborder nopadding">');
 							airContent.push('<table class="table table-striped table-bordered table-hover">');
 							airContent.push('<tbody>');
 							var rdata = lastData[p].MetaDatas;

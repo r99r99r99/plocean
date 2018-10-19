@@ -1,6 +1,6 @@
 var myApp = angular.module('myApp',['ui.grid', 'ui.grid.exporter','ui.grid.pagination',
                                     'ui.grid.resizeColumns','ui.grid.selection'
-                                    ,'ngDialog','ui.bootstrap','multi-select-tree','textAngular']); 
+                                    ,'ngDialog','ui.bootstrap']); 
 myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$timeout){
 	
 	//添加一下内容防止输出乱码

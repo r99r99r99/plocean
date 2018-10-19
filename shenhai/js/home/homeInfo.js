@@ -122,8 +122,6 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	    });
 	    var view = map.getView();
 		view.setCenter(coor);
-	  //点击站点后的弹出框
-	    element= document.getElementById('popup');
 	};
 	
 	$scope.getMapConfig();
@@ -143,59 +141,6 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     $scope.showStationStatus=function(station){
     	
     	
-    	var stationContent = new Array();
-    	stationContent.push('<div class="firstBoxIn">');
-    	stationContent.push('<div class="widget-title">');
-    	stationContent.push('<p class="label">');
-    	stationContent.push(station.collectTime);
-    	stationContent.push('</p>');
-    	stationContent.push('<h5>设备状态</h5>');
-    	stationContent.push('</div>');
-    	stationContent.push('<table class="table table-hover table-bordered table-responsive">');
-    	stationContent.push('<tr>');
-    	stationContent.push('<td class="table_blue_zi">供电电压</td>');
-    	stationContent.push('<td>');
-    	stationContent.push(station.bv);
-    	stationContent.push('</td>');
-    	stationContent.push('</tr>');
-    	stationContent.push('<tr>');
-    	stationContent.push('<td class="table_blue_zi">面板温度</td>');
-    	stationContent.push('<td>');
-    	stationContent.push(station.pt);
-    	stationContent.push('</td>');
-    	stationContent.push('</tr>');
-    	stationContent.push('<tr>');
-    	stationContent.push('<td class="table_blue_zi">网络状况</td>');
-    	stationContent.push('<td>');
-    	stationContent.push(station.ic);
-    	stationContent.push('</td>');
-    	stationContent.push('</tr>');
-    	stationContent.push('</table>');
-    	stationContent.push('<div class="widget-title">');
-    	stationContent.push('<p class="label">');
-    	stationContent.push(station.collectTime);
-    	stationContent.push('</p>');
-    	stationContent.push('<h5>位置信息</h5>');
-    	stationContent.push('</div>');
-    	stationContent.push('<table class="table table-hover table-bordered table-responsive">');
-    	stationContent.push('<tr>');
-    	stationContent.push('<td>东经:');
-    	stationContent.push(station.longitude);
-    	stationContent.push('</td>');
-    	stationContent.push('<td>北纬:');
-    	stationContent.push(station.latitude);
-    	stationContent.push('</td>');
-    	stationContent.push('</tr>');
-    	stationContent.push('<tr>');
-    	stationContent.push('<td class="table_blue_zi">偏移</td>');
-    	stationContent.push('<td>');
-    	stationContent.push(station.distance);
-    	stationContent.push('米</td>');
-    	stationContent.push('</tr>');
-    	stationContent.push('</table>');
-    	stationContent.push('</div>');
-    	$("#status").html("");
-		$("#status").html(stationContent.join(""));
 		//跳转到该站点为中心点
 		 coor = $scope.updateXY(station.longitude,station.latitude,'EPSG:4326', code);
     	 var view = map.getView();
@@ -217,7 +162,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
    		popup.setPosition(coordinates);
    		
 			
-			$(element).popover({
+		$(element).popover({
 				'placement': 'right',
 				'title':station.title,
 				'html': true,
@@ -234,74 +179,10 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 						+'<td class="firstTableTd">'+(station.distance).toFixed(2)+'米</td>'
 						+'</tr>'
 						+'</table>'
-			});
-			$(element).popover('show');
-			map.addOverlay(popup);
+		});
+		$(element).popover('show');
+		map.addOverlay(popup);
  		 
-    	/*//从站点列表中读取该站点的连接状况,以及未知信息
-    	var status ;
-    	angular.forEach($scope.stations, function(st){
-    		if(st.stationId==station.stationId){
-    			status = st;
-    		}
-    	});
-    	//从站点列表中读取该站点的连接状况,以及未知信息  ----end
-    	
-    	 coor = $scope.updateXY(station.longitude,station.latitude,'EPSG:4326', code);
-    	 var view = map.getView();
- 		 view.setCenter(coor);
-       		$(elementclick).popover('destroy');
-       		
-       	//展示该站点的复选框
-    		element = document.getElementById('popup');
-    		$(element).popover('destroy');
-    		var coordinates = ol.proj.transform([station.longitude,station.latitude], 'EPSG:4326', code);
-    		popup = null;
-    		popup = new ol.Overlay({
-				element: element,
-				positioning: 'bottom-center',
-				stopEvent: false,
-				offset: [110, -140]
-			});
-    		
-    		popup.setPosition(coordinates);
-    		
-			
-			$(element).popover({
-				'placement': 'right',
-				'title':station.title,
-				'html': true,
-				'content':'<table class="table table-hover table-bordered table-responsive" style="font-size: 12px">'
-						+'<tr >'
-						+'<td colspan="2" style="text-align:center;line-height: 10px;" >设备</td>'
-						+'</tr>'
-						+'<tr >'
-						+'<td class="firstTableTd">供电电压</td>'
-						+'<td class="firstTableTd">'+status.bv+'</td>'
-						+'</tr >'
-						+'<tr >'
-						+'<td class="firstTableTd">面板温度</td>'
-						+'<td class="firstTableTd">'+status.pt+'</td>'
-						+'</tr>'
-						+'<tr >'
-						+'<td class="firstTableTd">网络状况</td>'
-						+'<td class="firstTableTd">'+status.ic+'</td>'
-						+'</tr>'
-						+'<tr>'
-						+'<td colspan="2" style="text-align:center;">位置</td>'
-						+'</tr>'
-						+'<tr>'
-						+'<td class="firstTableTd">东经:'+(status.latitude).toFixed(5)+'°</td>'    
-						+'<td class="firstTableTd">北纬:'+(status.longitude).toFixed(5)+'°</td>'
-						+'</tr>'
-						+'<tr >'
-						+'<td class="firstTableTd">偏移</td>'
-						+'<td class="firstTableTd">'+(status.distance).toFixed(2)+'米</td>'
-						+'</tr>'
-						+'</table>'
-			});
-			$(element).popover('show');
-			map.addOverlay(popup);*/
     }
     
   //展开站点详情列表

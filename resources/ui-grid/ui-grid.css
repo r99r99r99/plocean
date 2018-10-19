@@ -1411,7 +1411,7 @@ fieldset[disabled] .ui-grid-pager-control button.focus {
   line-height: 1.5;
   border-radius: 3px;
   display: inline;
-  height: 16px;
+  height: 26px;
   width: 50px;
   vertical-align: top;
 }

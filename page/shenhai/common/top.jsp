@@ -10,15 +10,58 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link href="${ctx }/shenhai/css/common/select.css" rel="stylesheet" type="text/css" />
-		
-		<link href="${ctx }/resources/mstp/css/bootstrap.min.css" rel="stylesheet" />
+		<%-- <link href="${ctx }/resources/mstp/css/bootstrap.min.css" rel="stylesheet" />
 		<link href="${ctx }/resources/mstp/css/fullcalendar.css" rel="stylesheet" />
 		<link rel="stylesheet" href="${ctx }/resources/mstp/css/maruti-style.css" />
 		<link rel="stylesheet" href="${ctx }/resources/mstp/css/jquery.gritter.css" />
-		<link rel="stylesheet" href="${ctx }/resources/mstp/css/maruti-media.css" class="skin-color" />
+		<link rel="stylesheet" href="${ctx }/resources/mstp/css/maruti-media.css" class="skin-color" /> --%>
 		
+		<!-- 引入ACE框架部分 -->
+		<!-- bootstrap & fontawesome -->
+		<link rel="stylesheet" href="${ctx }/resources/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="${ctx }/resources/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+
+		<!-- page specific plugin styles -->
+
+		<!-- text fonts -->
+		<link rel="stylesheet" href="${ctx }/resources/assets/css/fonts.googleapis.com.css" />
+
+		<!-- ace styles -->
+		<link rel="stylesheet" href="${ctx }/resources/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+
+		<!--[if lte IE 9]>
+			<link rel="stylesheet" href="${ctx }/resources/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+		<![endif]-->
+		<link rel="stylesheet" href="${ctx }/resources/assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="${ctx }/resources/assets/css/ace-rtl.min.css" />
+
+		<!--[if lte IE 9]>
+		  <link rel="stylesheet" href="${ctx }/resources/assets/css/ace-ie.min.css" />
+		<![endif]-->
+
+		<!-- inline styles related to this page -->
+
+		<!-- ace settings handler -->
+		<script src="${ctx }/resources/assets/js/ace-extra.min.js"></script>
+
+		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
+
+		<!--[if lte IE 8]>
+		<script src="${ctx }/resources/assets/js/html5shiv.min.js"></script>
+		<script src="${ctx }/resources/assets/js/respond.min.js"></script>
+		<![endif]-->
 		
+		<!-- 引入ACE框架部分结束 -->
+		
+		<!--[if !IE]> -->
 		<script src="${ctx }/resources/jquery-2.1.3.min.js"></script>
+		<!-- <![endif]-->
+		<!--[if IE]>
+		<script src="${ctx }/resources/assets/js/jquery-1.11.3.min.js"></script>
+		<![endif]-->
+
+
+		
 		
 		
 		<!-- angularjs -->
@@ -40,8 +83,8 @@
 		<script src="${ctx }/resources/ui-grid/vfs_fonts.js"></script>
 		<link href="${ctx }/resources/ui-grid/ui-grid.css" rel="stylesheet">
 		<%-- <script src="${ctx }/resources/ng-grid/ng-grid.min.js"></script>
-		<link href="${ctx }/resources/ng-grid/ng-grid.min.css" rel="stylesheet"> --%>
-		<script src="${ctx }/resources/ng-grid/ng-grid-csv-export.js"></script>	
+		<link href="${ctx }/resources/ng-grid/ng-grid.min.css" rel="stylesheet"> 
+		<script src="${ctx }/resources/ng-grid/ng-grid-csv-export.js"></script>	--%>
 		
 <script type="text/javascript">
 <%
@@ -89,118 +132,75 @@ function showDepart(){
 </head>
 
 <body>
-	<div id="header">
-	  <h1 >${system.systemName } </h1>
-	</div>
-<!--close-Header-part--> 
+	<div id="navbar" class="navbar navbar-default          ace-save-state">
+		<div class="navbar-container ace-save-state" id="navbar-container">
+			<button type="button" class="navbar-toggle menu-toggler pull-left" id="menu-toggler" data-target="#sidebar">
+					<span class="sr-only">Toggle sidebar</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+			</button>
+			<div class="navbar-header pull-left">
+				   <a href="index.html" class="navbar-brand">
+						<small>
+							<!-- <i class="fa fa-leaf"></i> -->
+							${system.systemName }
+						</small>
+					</a>
+			</div>
+			
+			<div class="navbar-buttons navbar-header pull-right" role="navigation">
+				<ul class="nav ace-nav">
+						<li class="light-blue dropdown-modal">
+							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
+								<img class="nav-user-photo" src="${ctx }/resources/assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<span class="user-info">
+									<small>欢迎,</small>
+									${user.realName }
+								</span>
 
-<!--top-Header-messaages-->
-<div class="btn-group rightzero"> 
-	<a class="top_message tip-left" title="Manage Files"><i class="icon-file"></i></a> 
-	<a class="top_message tip-bottom" title="Manage Users"><i class="icon-user"></i></a> 
-	<a class="top_message tip-bottom" title="Manage Comments"><i class="icon-comment"></i><span class="label label-important">5</span></a> 
-	<a class="top_message tip-bottom" title="Manage Orders"><i class="icon-shopping-cart"></i></a> 
-</div>
-<!--close-top-Header-messaages--> 
+								<i class="ace-icon fa fa-caret-down"></i>
+							</a>
 
-<!--top-Header-menu-->
-<div id="user-nav" class="navbar navbar-inverse">
-  <ul class="nav">
-  <%--   <li class="" ><a title="" href="${ctx}/info_warnvalue.do?currmenuId=108020"><i class="icon icon-user"></i> 
-		<span class="text">预警</span> <span class="label label-important">${warnNum}</span>
-	</a></li> --%>
-	 <li class="" onclick="showDepart()"><!-- > -->
-	 	<a title=""><i class="icon icon-user"></i> <span class="text">${plat.name }</span></a>
-	 </li>
-	 
-	<!--  <li class=" dropdown"><a href="#" >
-	  <i class="icon icon-envelope"></i> 
-	  <span class="text">通知信息</span> 
-	  <span class="label label-important" id="noticeNum">0</span> 
-	  <b class="caret"></b></a>
-     </li> -->
-    
-    <li class=" dropdown" id="menu-messages">
-    	<a href="#" data-toggle="dropdown" data-target="#menu-messages" class="dropdown-toggle">
-    		<i class="icon icon-cog"></i> 
-    		<span class="text">欢迎,${user.realName }</span> 
-    		<b class="caret"></b>
-    	</a>
-      <ul class="dropdown-menu menu-messages_dropdown">
-      	<li><a class="sAdd" title="" href="${ctx}/userSettingInfo.do">个人设置</a></li>
-        
-        <li><a class="sInbox" title="" href="${ctx}/passSettingInfo.do">密码修改</a></li>
-        
-        <li><a class="sInbox" title="" href="${ctx}/choseSystem.do">返回系统</a></li>
-        
-         <li><a class="sTrash" title="" href="${ctx}/logout.do">退出登录</a></li>
-      </ul>
-    </li>
-  </ul>
-</div>
-<!--close-top-Header-menu-->
-<!-- TEAM STATUS -->
-	<div class="team-status" id="team-status">
-		<ul class="team-list">
-		<c:forEach var="plat" items="${platList}">
-			<li class="" onclick="platformTurn('${plat.code }')">
-				  <a href="javascript:void(0);">
-				  <span class="image">
-					  <img src="images/top/${plat.picture }" alt="" />
-				  </span>
-				  <span class="title">
-					${plat.name }
-				  </span>
-					<div class="progress">
-					  <div class="progress-bar progress-bar-success" style="width: 35%">
-						<span class="sr-only">35% Complete (success)</span>
-					  </div>
-					</div>
-					<span class="status">
-						<!-- <div class="field">
-							<span class="badge badge-red">4</span> 站点
-							<span class="pull-right fa fa-list-ul"></span>
-						</div> -->
-				    </span>
-				  </a>
-				</li>
-		</c:forEach>
-		</ul>
-	</div>
-<!-- TEAM STATUS END-->
-<div id="sidebar">
-  <ul>
-  	 <c:forEach var="menu" items="${menuList}">
-  	 	<c:choose> 
-  	 		<c:when test="${menu.url !=null&&menu.url!=''}">  
-  	 			<li onclick="turn('${menu.url }')">
-  	 				<a href="#"><i class="${menu.picture }"></i><span>${menu.name }</span></a>
-  	 				<ul>
-	  	 				<c:forEach var="cmenu" items="${menu.childMenu}">
-	  	 					<li><a href="${cmenu.url }?currmenuId=${cmenu.code }">${cmenu.name }</a></li>
-	  	 				</c:forEach>
-	  	 			</ul>
-  	 			</li>
-  	 		</c:when>
-  	 		<c:otherwise>
-  	 			<li>
-  	 				<a href="#"><i class="${menu.picture }"></i><span>${menu.name }</span></a>
-  	 				<ul>
-	  	 				<c:forEach var="cmenu" items="${menu.childMenu}">
-	  	 					<li><a href="${cmenu.url }?currmenuId=${cmenu.code }">${cmenu.name }</a></li>
-	  	 				</c:forEach>
-	  	 			</ul>
-  	 			</li>
-  	 		</c:otherwise>
-  	 	</c:choose>
-  	 </c:forEach>
-  </ul>
-</div>
-		
-	
+							<ul class="user-menu dropdown-menu-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+								<li>
+									<a href="${ctx}/userSettingInfo.do">
+										<i class="ace-icon fa fa-cog"></i>
+										个人设置
+									</a>
+								</li>
+
+								<li>
+									<a href="${ctx}/passSettingInfo.do">
+										<i class="ace-icon fa fa-user"></i>
+										密码修改
+									</a>
+								</li>
+								
+								<%-- <li>
+									<a href="${ctx}/choseSystem.do">
+										<i class="ace-icon fa fa-user"></i>
+										返回系统
+									</a>
+								</li> --%>
+
+								<li class="divider"></li>
+
+								<li>
+									<a href="${ctx}/logout.do">
+										<i class="ace-icon fa fa-power-off"></i>
+										退出登录
+									</a>
+								</li>
+							</ul>
+						</li>
+					</ul>
+			</div>
+		</div>
+	</div>	
 <!--头部结束-->
 
-<script src="${ctx }/resources/mstp/js/excanvas.min.js"></script> 
+<%-- <script src="${ctx }/resources/mstp/js/excanvas.min.js"></script> 
 <script src="${ctx }/resources/mstp/js/jquery.ui.custom.js"></script> 
 <script src="${ctx }/resources/mstp/js/bootstrap.min.js"></script> 
 <script src="${ctx }/resources/mstp/js/jquery.peity.min.js"></script> 
@@ -208,7 +208,24 @@ function showDepart(){
 <script src="${ctx }/resources/mstp/js/fullcalendar.min.js"></script> 
 <script src="${ctx }/resources/mstp/js/maruti.js"></script> 
 <script src="${ctx }/resources/mstp/js/maruti.dashboard.js"></script> 
-<script src="${ctx }/resources/mstp/js/maruti.chat.js"></script> 
+<script src="${ctx }/resources/mstp/js/maruti.chat.js"></script>  --%>
+
+
+<!-- basic scripts -->
+		<script type="text/javascript">
+			if('ontouchstart' in document.documentElement) document.write("<script src='${ctx }/resources/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+		</script>
+		<script src="${ctx }/resources/assets/js/bootstrap.min.js"></script>
+	
+		
+
+		<!-- ace scripts -->
+		<script src="${ctx }/resources/assets/js/ace-elements.min.js"></script>
+		<script src="${ctx }/resources/assets/js/ace.min.js"></script>
+
+		<!-- inline scripts related to this page -->
+		
+		
 <script type="text/javascript">
 
   function getNoticeList(){
