@@ -18,8 +18,8 @@
 			</script>
 			<div class="sidebar-shortcuts" id="sidebar-shortcuts">
 					<div class="sidebar-shortcuts-large" id="sidebar-shortcuts-large">
-						<button class="btn btn-success">
-							<i class="ace-icon fa fa-signal"></i>
+						<button class="btn btn-success sidebar-collapse">
+							<i class="ace-icon glyphicon glyphicon-step-backward" ></i>
 						</button>
 
 						<button class="btn btn-info">
@@ -48,19 +48,12 @@
 
 				<ul class="nav nav-list">
 					<c:forEach var="menu" items="${menuList}">
-						<c:if test="${menu.isopen ==1}">
-							<li class="">
-								<c:choose> 
-								<c:when test="${menu.url !=null&&menu.url!=''}">  
-									<a href="${menu.url }">
-										<i class="menu-icon ${menu.picture }"></i>
-										<span class="menu-text"> ${menu.name } </span>
-									</a>
-			
-									<b class="arrow"></b>
-								</c:when>
-								<c:otherwise>
-									<a href="${menu.url }" class="dropdown-toggle">
+							<li class="<c:if test='${menu.isopen ==1}'>open</c:if>">
+									<a href="${menu.url }" 
+										<c:if test="${menu.url ==null||menu.url==''}">
+											class="dropdown-toggle"
+										</c:if>
+									>
 										<i class="menu-icon ${menu.picture }"></i>
 										<span class="menu-text"> ${menu.name } </span>
 			
@@ -69,55 +62,16 @@
 									<b class="arrow"></b>
 									<ul class="submenu">
 										<c:forEach var="childMenu" items="${menu.childMenu }">
-											<li class="">
+											<li class="<c:if test='${childMenu.iscurr ==1}'>active</c:if>">
 												<a href="${childMenu.url }?currmenuId=${childMenu.code }">
 													<i class="menu-icon fa fa-caret-right"></i>
 													${childMenu.name }
 												</a>
-				
 												<b class="arrow"></b>
 											</li>
 										</c:forEach>
 									</ul>
-								</c:otherwise>
-								</c:choose>
 							</li>
-						</c:if>
-						<c:if test="${menu.isopen !=1}">
-							<li class="">
-								<c:choose> 
-								<c:when test="${menu.url !=null&&menu.url!=''}">  
-									<a href="${menu.url }">
-										<i class="menu-icon ${menu.picture }"></i>
-										<span class="menu-text"> ${menu.name } </span>
-									</a>
-			
-									<b class="arrow"></b>
-								</c:when>
-								<c:otherwise>
-									<a href="${menu.url }" class="dropdown-toggle">
-										<i class="menu-icon ${menu.picture }"></i>
-										<span class="menu-text"> ${menu.name } </span>
-			
-										<b class="arrow fa fa-angle-down"></b>
-									</a>
-									<b class="arrow"></b>
-									<ul class="submenu">
-										<c:forEach var="childMenu" items="${menu.childMenu }">
-											<li class="">
-												<a href="${childMenu.url }?currmenuId=${childMenu.code }">
-													<i class="menu-icon fa fa-caret-right"></i>
-													${childMenu.name }
-												</a>
-				
-												<b class="arrow"></b>
-											</li>
-										</c:forEach>
-									</ul>
-								</c:otherwise>
-								</c:choose> 
-							</li>
-						</c:if>
 					</c:forEach>
 				</ul><!-- /.nav-list -->
 
