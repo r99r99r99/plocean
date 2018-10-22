@@ -168,15 +168,19 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 				'html': true,
 				'content':'<table class="table table-hover table-bordered table-responsive" style="font-size: 12px">'
 						+'<tr>'
-						+'<td colspan="2" style="text-align:center;">站点状态</td>'
+						+'<td colspan="2" style="text-align:center;">站点位置</td>'
 						+'</tr>'
 						+'<tr>'
-						+'<td class="firstTableTd">东经:'+(station.latitude).toFixed(5)+'°</td>'    
-						+'<td class="firstTableTd">北纬:'+(station.longitude).toFixed(5)+'°</td>'
+						+'<td class="firstTableTd">东经:'+(station.latitude).toFixed(3)+'°</td>'    
+						+'<td class="firstTableTd">北纬:'+(station.longitude).toFixed(3)+'°</td>'
 						+'</tr>'
-						+'<tr >'
+						/*+'<tr >'
 						+'<td class="firstTableTd">偏移</td>'
 						+'<td class="firstTableTd">'+(station.distance).toFixed(2)+'米</td>'
+						+'</tr>'*/
+						+'<tr>'
+						+'<td colspan="1" style="text-align:center;">站点状态</td>'
+						+'<td colspan="1" style="text-align:center;">无异常</td>'
 						+'</tr>'
 						+'</table>'
 		});
@@ -222,6 +226,9 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
        			 url:'getDatas4Firstpage.do',
        			 params:sparams})
        			 .success(function(res){
+       				console.log(res);
+       				var statuss = res.deviceStatusList;
+       				
        				 //展示该站点的实时水质
        				var waterStandard = res.waterStandard;
        				if(waterStandard==null){
@@ -235,14 +242,41 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
   					var srcpath = "page-images/watertype"+station.waterType+"/"+waterStandard.standard_grade+"grade.png";
   					$("#gradeImg").attr('src',srcpath);
   					$scope.stand = waterStandard;
-       				 
+       				//展示设备状态列表 
+  					var statusContent = new Array();
+  					statusContent.push('<table class="table table-hover table-bordered table-responsive">');
+  					statusContent.push('<thead>');
+  					statusContent.push('<tr>');
+  					statusContent.push('<th >');
+  					statusContent.push('设备');
+  					statusContent.push('</td>');
+  					statusContent.push('<td >');
+  					statusContent.push('状态');
+  					statusContent.push('</td>');
+  					statusContent.push('</tr>');
+  					statusContent.push('</thead>');
+  					statusContent.push('<tbody>');
+  					for(var p in statuss){
+  						var status = statuss[p];
+  						statusContent.push('<tr>');
+  						statusContent.push('<td class="table_blue_zi">');
+  						statusContent.push(status.deviceName);
+  						statusContent.push('</td>');
+  						statusContent.push('<td>');
+  						statusContent.push(status.dataValue);
+  						statusContent.push('</td>');
+  						statusContent.push('</tr>');
+  					}
+  					statusContent.push('</tbody>');
+  					statusContent.push('</table>');
+  					
        				 //添加右侧实时数据展示页面
        				 var lastData = res.Datas;
        				 var lastContent = new Array();
        				 lastContent.push('<div class="firstBoxIn">');
        				 for(var p in lastData){
        					 lastContent.push('<div class="">');
-       					 lastContent.push('<div class="widget-title">');
+       					 lastContent.push('<div class="widget-header">');
        					 lastContent.push('<p class="label">');
        					 lastContent.push(lastData[p].lastTime);
        					 lastContent.push('</p><h5>');
@@ -268,6 +302,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
        				 
        				 $("#firstBox").html("");
      			     $("#firstBox").html(lastContent.join(""));
+     			     $("#statusBox").html(statusContent.join(""));
        			 }); 
        	
         };

@@ -55,7 +55,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							<div class="col-xs-12">
 								<!-- PAGE CONTENT BEGINS -->
 									<div class="row">
-										<div class="col-xs-9">
+										<div class="col-xs-2" >
+								    		<div class="widget-box widget-color-blue2 ui-sortable-handle" style="height:40vh">
+								    			<div class="widget-header">
+										    		<h5 class="widget-title">{{station.title}}站点设备状态</h5>
+										    	</div>
+										    	<div class="widget-body noborder nopadding" style="text-align: center;">
+													<div id="statusBox" class="firstBox">
+													</div>
+										    	</div>
+								    		</div>
+								    	</div>
+								    	
+										<div class="col-xs-8">
 											<div id="map" class="littlemap">
 												<div id="popup"></div>
 												<div id="location" class="location1"></div>
@@ -102,7 +114,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											</div>
 										</div>
 										
-										<div class="col-xs-3" >
+										<div class="col-xs-2" >
 								    		<div class="widget-box widget-color-blue2 ui-sortable-handle" style="height:40vh">
 								    			<div class="widget-header">
 										    		<h5 class="widget-title">{{station.title}}站点实时数据</h5>

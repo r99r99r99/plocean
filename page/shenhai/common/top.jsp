@@ -151,6 +151,18 @@ function showDepart(){
 			
 			<div class="navbar-buttons navbar-header pull-right" role="navigation">
 				<ul class="nav ace-nav">
+						<li class="purple dropdown-modal">
+							<a  href="info_warnvalue.do?currmenuId=108020">
+								<i class="ace-icon fa fa-bell icon-animated-bell"></i>
+								<span class="badge badge-important">${warnNum }</span>
+							</a>
+						</li>
+						<li class="green dropdown-modal">
+							<a  href="info_noticeList.do?currmenuId=170030">
+								<i class="ace-icon fa fa-envelope icon-animated-vertical"></i>
+								<span class="badge badge-success" id="noReadNoticeId"></span>
+							</a>
+						</li>
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
 								<img class="nav-user-photo" src="${ctx }/resources/assets/images/avatars/user.jpg" alt="Jason's Photo" />
@@ -230,7 +242,7 @@ function showDepart(){
 
   function getNoticeList(){
 	  var mparam = {};	  
-	  $.ajax({
+	 /*  $.ajax({
 		  url: 'getLastNoReadNoticeListByUser.do', //url  action是方法的名称
 		  data: mparam,
 	      type: 'POST',
@@ -248,7 +260,22 @@ function showDepart(){
 	      },
 	      error: function(msg) {
 	         
-	      }
+	      } 
+  	});*/
+  	
+  	 $.ajax({
+		  url: 'getNoReadNoticeListByUser.do', //url  action是方法的名称
+		  data: mparam,
+	      type: 'POST',
+	      dataType: "json", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
+	      ContentType: "application/json; charset=utf-8",
+	      success: function(data) {
+	    	  console.log(data);
+	    	  $("#noReadNoticeId").html(data.length)
+	      },
+	      error: function(msg) {
+	         
+	      } 
   	});
   }
   //定时读取未读取的通知

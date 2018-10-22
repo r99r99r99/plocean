@@ -141,7 +141,7 @@
               <input type="username" name="username" id="username_input" type="text"   placeholder="用户名">
             </div>
             <div class="ui-form-item loginPassword">
-              <input name="password" id="pwd_input"  type="password" class="lock"   placeholder="密码">
+              <input name="password" id="pwd_input"  type="password" class="lock"  placeholder="密码">
             </div>
             <div class="login_reme">
               	<!-- <input type="checkbox">
