@@ -28,7 +28,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<div class="main-container ace-save-state" id="main-container">
 			<%@ include file="../common/left.jsp" %>
 			
-			
 			<div class="main-content">
 				<div class="main-content-inner">
 					<div class="breadcrumbs ace-save-state" id="breadcrumbs">
@@ -77,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										         </div>
 										         <div class="widget-body nopadding">
 										         	<ul class="ace-thumbnails clearfix">
-														<li class="col-xs-2" ng-repeat="pic in picList">
+														<li class="col-xs-2" ng-repeat="pic in picList" style="border: 0px">
 															<a href="{{pic.src }}" title="{{pic.origName }}" data-rel="colorbox" class="cboxElement">
 																<img width="150" height="150" alt="150x150" src="{{pic.src }}">
 															</a>
