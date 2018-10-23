@@ -131,6 +131,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <link rel="stylesheet" href="${ctx }/resources/zTree_s/css/metroStyle/metroStyle.css" type="text/css">
 <script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
-<script src="${ctx }/shenhai/js/notice/noticeUp_Info.js"></script>
+<script src="${ctx }/shenhai/js/notice/noticeList_Info.js"></script>
 </body>
 </html>
