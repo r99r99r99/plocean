@@ -22,7 +22,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%@ include file="../common/textAngular.jsp" %>
 		
 		<!-- page specific plugin styles -->
-		<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
+		<script src="${ctx }/shenhai/resources/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx }/shenhai/js/user/passSettingInfo.js"></script>
 		<div class="main-container ace-save-state" id="main-container">
 			<%@ include file="../common/left.jsp" %>

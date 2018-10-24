@@ -15,13 +15,13 @@
 	<body ng-app="myApp" ng-controller="customersCtrl"> 
 		<%@ include file="../common/top.jsp" %>
 		<!-- angularjs select tree -->
-		<link rel="stylesheet" href="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
 		<script type="text/javascript" src="${ctx }/shenhai/js/station/shipinInfo.js"></script>
 		
-		<link href="${ctx }/resources/video/css/video-js.min.css" rel="stylesheet">
-		<script src="${ctx }/resources/video/js/video.min.js"></script>
+		<link href="${ctx }/shenhai/resources/video/css/video-js.min.css" rel="stylesheet">
+		<script src="${ctx }/shenhai/resources/video/js/video.min.js"></script>
 		<div class="main-container" id="main-container">
 			<script type="text/javascript">
 				try{ace.settings.check('main-container' , 'fixed')}catch(e){}

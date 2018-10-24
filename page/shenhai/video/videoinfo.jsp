@@ -24,16 +24,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<!-- 视频监控部分 -->
 		<link href="<%=path %>/shenhai/css/video/video.css" rel="stylesheet"> 
 		
-		<link rel="stylesheet" href="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
 		<script src="${ctx}/shenhai/js/common.js" type="text/javascript"></script>
 		
-		<script src="${ctx}/resources/highcharts/highcharts.js"></script>
-		<script src="${ctx}/resources/highcharts/exporting.js"></script>
-		<script src="${ctx}/resources/highcharts/highcharts-more.js"></script>
-		<script src="${ctx}/resources/highcharts/highcharts-zh_CN.js"></script>
-		<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
+		<script src="${ctx }/shenhai/resources/highcharts/highcharts.js"></script>
+		<script src="${ctx }/shenhai/resources/highcharts/exporting.js"></script>
+		<script src="${ctx }/shenhai/resources/highcharts/highcharts-more.js"></script>
+		<script src="${ctx }/shenhai/resources/highcharts/highcharts-zh_CN.js"></script>
+		<script src="${ctx }/shenhai/resources/My97DatePicker/WdatePicker.js"></script>
 		
 		<div class="main-container ace-save-state" id="main-container">
 			<%@ include file="../common/left.jsp" %>

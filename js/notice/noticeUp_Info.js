@@ -211,6 +211,8 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 					  col = response.cols;
 					  $scope.gridOptions.columnDefs = col;
 					  $scope.gridOptions.data = row;
+					  
+					  
 	    	     });
 		};
 		

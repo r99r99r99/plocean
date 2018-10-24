@@ -57,42 +57,66 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 											<div class="widget-box  ui-sortable-handle">
 												<div class="widget-header">
 										    		<h5 class="widget-title">站点列表</h5>
+										    		<div class="widget-toolbar no-border">
+														<label>
+														  <input type="checkbox" class="ace ace-switch ace-switch-3" ng-click="changeStationType()"/>
+														  &nbsp;&nbsp;
+														  <span class="lbl middle">&nbsp;&nbsp;{{stationType.name}}</span>
+														</label>
+													 </div>
 										    	</div>
 										    	<div class="widget-body noborder nopadding" style="height:75vh;text-align: center;">
-										    		<ul id="mtree" class="ztree"></ul>
+										    		<div id="river">
+										    			<ul id="rivertree" class="ztree"></ul>
+										    		</div>
+										    		<div id="region">
+										    			<ul id="regiontree" class="ztree"></ul>
+										    		</div>
 										    	</div>
 											</div>
 										</div>
 										<div class="col-xs-10">
 											<ul class="seachform">
 												<input type="hidden" ng-model="u.stationId" />
-											    <li><label>参数:</label>
-											    <div class="vocation">
-											    	<multi-select-tree data-input-model="u.indicatorTree" multi-select="true" ng-model="indicator"
-								                                   data-output-model="u.indicatorIds" data-default-label="请选择监测参数."
-								                                   data-callback="selectOnly1Or2(item, selectedItems)"
-																   data-switch-view-callback="switchViewCallback(scopeObj)"
-								                                   data-select-only-leafs="true"
-								                                   data-switch-view="false">
-													</multi-select-tree>
-										        </div>
-											    </li>
+												<input type="hidden" ng-model="u.type" />
 											    <li><label>开始时间:</label>
 											    <div class="vocation">
-											    	<input name="startDate" ng-model="u.beginDate" id="startDate" 
-											    	placeholder="开始时间"  type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" 
+											    	<input name="startDate" ng-model="u.beginTime" id="beginTime" 
+											    	placeholder="开始时间"  type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" 
 											    	onchange="timeChange()" class="scinput" >
 										        </div>
 											    </li>
 											    <li><label>结束时间:</label>
 											    <div class="vocation">
-											    	<input name="endDate" ng-model="u.endDate" id="endDate" placeholder="结束时间" value="${endDate }" type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd HH:mm:ss'})" onchange="timeChange()" class="scinput" >
+											    	<input name="endDate" ng-model="u.endTime" id="endTime" placeholder="结束时间" value="${endDate }" type="text" onFocus="WdatePicker({dateFmt:'yyyy-MM-dd'})" onchange="timeChange()" class="scinput" >
 										        </div>
 											    </li>
+											    <li><label>统计口径</label>
+												  <select  ng-model="u.collectType" class="select3"
+							                              ng-change="queryData()" 
+														  ng-options="option.value as option.name for option in typelist">
+													</select>
+											    </li>
+											    <li>
+											   		 <div class="checkbox" style="margin-top:0px">
+											   		 	<label>
+											   		 		<input name="form-field-checkbox" type="checkbox" ng-model="u.tongbi" class="ace">
+											   		 		<span class="lbl"> 同比</span>
+											   		 	</label>
+											   		 </div>
+											    </li>
+											    <li>
+											   		 <div class="checkbox" style="margin-top:0px">
+											   		 	<label>
+											   		 		<input name="form-field-checkbox" type="checkbox" ng-model="u.huanbi" class="ace">
+											   		 		<span class="lbl"> 环比</span>
+											   		 	</label>
+											   		 </div>
+											    </li>
 											    <li><label>&nbsp;</label><input name="" type="button" class="scbtn" ng-click="query()" value="查询"/></li>
-										    </ul>
+											 </ul>
 										     <div>
-												<div id="container" style="height:65vh;"></div>
+												<div  ui-grid="gridOptions" ui-grid-selection ui-grid-pagination ui-grid-exporter  class="gridStyle"></div>
 											</div>
 											
 										</div>
@@ -106,9 +130,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			<%@ include file="../common/footer.jsp" %>
 		</div>
+
 <link rel="stylesheet" href="${ctx }/shenhai/resources/zTree_s/css/metroStyle/metroStyle.css" type="text/css">
 <script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
-<script src="${ctx }/shenhai/js/dataquery/graphquery_init.js"></script>
+<script src="${ctx }/shenhai/js/report/reportCenter_info.js"></script>
 </body>
 </html>

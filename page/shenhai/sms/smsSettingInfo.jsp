@@ -15,9 +15,9 @@
 	<body ng-app="myApp" ng-controller="customersCtrl"> 
 		<%@ include file="../common/top.jsp" %>
 		<!-- angularjs select tree -->
-		<link rel="stylesheet" href="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
 		<script type="text/javascript" src="${ctx }/shenhai/js/sms/smsSettingInfo.js"></script>
 		<div class="main-container" id="main-container">
 			<script type="text/javascript">

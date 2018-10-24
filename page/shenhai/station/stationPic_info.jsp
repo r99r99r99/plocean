@@ -22,8 +22,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%@ include file="../common/textAngular.jsp" %>
 		
 		<!-- page specific plugin styles -->
-		<link rel="stylesheet" href="${ctx }/resources/assets/css/colorbox.min.css" />
-		<script src="${ctx }/resources/assets/js/jquery.colorbox.min.js"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/colorbox.min.css" />
+		<script src="${ctx }/shenhai/resources/assets/js/jquery.colorbox.min.js"></script>
 		
 		<div class="main-container ace-save-state" id="main-container">
 			<%@ include file="../common/left.jsp" %>
@@ -98,9 +98,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<%@ include file="../common/footer.jsp" %>
 		</div>
 		
-<link rel="stylesheet" href="${ctx }/resources/zTree_s/css/metroStyle/metroStyle.css" type="text/css">
-<script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
-<script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
+<link rel="stylesheet" href="${ctx }/shenhai/resources/zTree_s/css/metroStyle/metroStyle.css" type="text/css">
+<script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
 <script src="${ctx }/shenhai/js/station/stationPic_info.js"></script>
 </body>
 </html>

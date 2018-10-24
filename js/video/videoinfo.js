@@ -6,7 +6,13 @@ $(function () {
 	// 检查插件是否已经安装过
 	if (-1 == WebVideoCtrl.I_CheckPluginInstall()) {
 		alert("您还未安装过插件，双击开发包目录里的WebComponents.exe安装！");
-		downloadFile("http://localhost:8080/shocean/resources/video/WebComponents.exe");
+		var curWwwPath=window.document.location.href; 
+		var pathName=window.document.location.pathname; 
+		var pos=curWwwPath.indexOf(pathName); 
+		var localhostPaht=curWwwPath.substring(0,pos);
+		var projectName=pathName.substring(0,pathName.substr(1).indexOf('/')+1);
+		var filePath = localhostPaht+projectName+"/shenhai/resources/video/WebComponents.exe";
+		downloadFile(filePath);
 		return;
 	}
 	
@@ -1541,24 +1547,4 @@ function clickGetDeviceIP() {
 	}
 }
 
-function downloadFile(url){
 
-    //定义一个form表单,通过form表单来发送请求
-    var form=$("<form>");
-
-    //设置表单状态为不显示
-    form.attr("style","display:none");
-
-    //method属性设置请求类型为get
-    form.attr("method","get");
-
-    //action属性设置请求路径,(如有需要,可直接在路径后面跟参数)
-    //例如:htpp://127.0.0.1/test?id=123
-    form.attr("action",url);
-
-    //将表单放置在页面(body)中
-    $("body").append(form);
-
-    //表单提交
-    form.submit();
-}

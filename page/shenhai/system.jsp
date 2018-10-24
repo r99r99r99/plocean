@@ -11,8 +11,8 @@
   <head>
 	<title>${system.systemName }</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<link href="<%=path %>/system/css/style.css" rel="stylesheet" type="text/css" />
-	<script language="JavaScript" src="<%=path %>/system/js/jquery.js"></script>
+	<link href="<%=path %>/shenhai/system/css/style.css" rel="stylesheet" type="text/css" />
+	<script language="JavaScript" src="<%=path %>/shenhai/system/js/jquery.js"></script>
 	
 	<script language="javascript">
 		$(function(){
@@ -28,7 +28,7 @@
    </script>
   </head>
 
-<body style="background-color:#1c77ac; background-image:url(<%=path %>/system/images/light1.png); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
+<body style="background-color:#1c77ac; background-image:url(<%=path %>/shenhai/system/images/light1.png); background-repeat:no-repeat; background-position:center top; overflow:hidden;">
 
 
     
@@ -52,7 +52,7 @@
     
     </div>
     
-    <div class="loginbm">Copyright © 2016-2018 山东深海海洋科技有限公司</div>
+    <div class="loginbm">Copyright © 2016-2018 山东东润仪表科技有限公司</div>
 	
     
 </body>

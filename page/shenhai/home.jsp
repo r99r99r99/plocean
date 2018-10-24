@@ -28,11 +28,11 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 	<body class="no-skin" ng-app="myApp" ng-controller="customersCtrl">
 		<%@ include file="common/top.jsp" %>
-		<link rel="stylesheet" href="${ctx}/resources/openlayersv3.20.1/css/ol.css" type="text/css">
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/openlayersv3.20.1/css/ol.css" type="text/css">
 		<script src="${ctx}/shenhai/js/common.js" type="text/javascript"></script>
-		<script src="${ctx}/resources/openlayersv3.20.1/build/ol.js" type="text/javascript"></script>
-		<script src="${ctx}/resources/highcharts-ng/highcharts-ng.js" type="text/javascript"></script>
-		<script src="${ctx}/resources/highcharts-ng/highstock.src.js"></script>
+		<script src="${ctx }/shenhai/resources/openlayersv3.20.1/build/ol.js" type="text/javascript"></script>
+		<script src="${ctx }/shenhai/resources/highcharts-ng/highcharts-ng.js" type="text/javascript"></script>
+		<script src="${ctx }/shenhai/resources/highcharts-ng/highstock.src.js"></script>
 		<%@ include file="common/textAngular.jsp" %>
 		<div class="main-container ace-save-state" id="main-container">
 			<%@ include file="common/left.jsp" %>
@@ -73,7 +73,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 												<div id="location" class="location1"></div>
 												<div id="layerbox" class="layerbox usel" style="position:absolute;z-index:444;right: 0px; top: 8px; left: 8px">
 													 <div class="ui3-control-shadow" ng-click="showlayersControl();">
-													 	<img class="ui3-control-icon" src="images/icon/location2.png" />
+													 	<img class="ui3-control-icon" src="shenhai/images/icon/location2.png" />
 													 	<div class="uicontrols">&nbsp;&nbsp;站点列表</div>
 													 </div>
 												</div>
@@ -134,7 +134,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										    		<h5 class="widget-title">当前水质</h5>
 										    	</div>
 										    	<div class="widget-body noborder nopadding" style="height:auto;text-align: center;">
-										    		<img id="gradeImg" alt="" src="" style="margin-top:20px;width:70%;height:40px;">
+										    		<img id="gradeImg" alt="" src="" style="margin-top:20px;width:70%;">
 										    		</br>
 										    		<h4>当前水质等级:{{stand.standardName}}</h4>
 										    		</br>

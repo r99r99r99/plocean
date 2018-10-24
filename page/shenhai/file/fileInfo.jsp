@@ -17,9 +17,9 @@
 		<%@ include file="../common/top.jsp" %>
 		
 		<script src="${ctx }/shenhai/js/file/fileInfo.js"></script>
-		<script src="${ctx }/resources/angular-file-upload-master/dist/angular-file-upload.js"></script>
-		<script src="${ctx }/resources/angular-file-upload-master/dist/directives.js"></script>
-		<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
+		<script src="${ctx }/shenhai/resources/angular-file-upload-master/dist/angular-file-upload.js"></script>
+		<script src="${ctx }/shenhai/resources/angular-file-upload-master/dist/directives.js"></script>
+		<script src="${ctx }/shenhai/resources/My97DatePicker/WdatePicker.js"></script>
 		
 		<div class="main-container" id="main-container">
 			<script type="text/javascript">

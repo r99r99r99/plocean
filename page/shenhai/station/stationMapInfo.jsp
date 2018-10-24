@@ -37,17 +37,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%@ include file="../common/top.jsp" %>
 		<%@ include file="../common/textAngular.jsp" %>
 		<!-- 如果展示百度地图需要 -->
-		<link href="${ctx}/resources/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>
-		<script src="${ctx}/resources/highcharts-ng/highcharts-ng.js" type="text/javascript"></script>
-		<script src="${ctx}/resources/highcharts-ng/highstock.src.js"></script>
+		<link href="${ctx }/shenhai/resources/bootstrap/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css"/>
+		<script src="${ctx }/shenhai/resources/highcharts-ng/highcharts-ng.js" type="text/javascript"></script>
+		<script src="${ctx }/shenhai/resources/highcharts-ng/highstock.src.js"></script>
 		
-		<script src="${ctx}/resources/highcharts-ng/exporting.js"></script>
+		<script src="${ctx }/shenhai/resources/highcharts-ng/exporting.js"></script>
 		<script src="${ctx }/shenhai/resources/assets/js/jquery.PrintArea.js"></script>
 		<script src="${ctx}/shenhai/js/common.js" type="text/javascript"></script>
 		<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=5FYnGVhps4K2WlMd17k4E8ifxAPYvmSo"></script>
 		
-		<link rel="stylesheet" href="${ctx}/resources/openlayersv3.20.1/css/ol.css" type="text/css">
-		<script src="${ctx}/resources/openlayersv3.20.1/build/ol.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/openlayersv3.20.1/css/ol.css" type="text/css">
+		<script src="${ctx }/shenhai/resources/openlayersv3.20.1/build/ol.js" type="text/javascript"></script>
 		
 		
 		<div class="main-container" id="main-container">

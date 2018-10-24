@@ -16,8 +16,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<meta name="keywords" content="入海污染源" />
 		
 		
-		<link rel="stylesheet" href="${ctx}/resources/openlayersv3.20.1/css/ol.css" type="text/css">
-		<script src="${ctx}/resources/openlayersv3.20.1/build/ol.js" type="text/javascript"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/openlayersv3.20.1/css/ol.css" type="text/css">
+		<script src="${ctx }/shenhai/resources/openlayersv3.20.1/build/ol.js" type="text/javascript"></script>
 		<!-- basic styles -->
 <style>
 #treecontrol{  
@@ -39,13 +39,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<link href="<%=path %>/shenhai/css/map/openmap.css" rel="stylesheet"> 
 		<%@ include file="../common/textAngular.jsp" %>
 		
-		<link rel="stylesheet" href="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
-		<script type="text/javascript" src="${ctx }/resources/angular-xeditable/js/xeditable.js"></script>
-		<link rel="stylesheet" href="${ctx }/resources/angular-xeditable/css/xeditable.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-xeditable/js/xeditable.js"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/angular-xeditable/css/xeditable.css" />
 		<script src="${ctx}/shenhai/js/common.js" type="text/javascript"></script>
-		<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
+		<script src="${ctx }/shenhai/resources/My97DatePicker/WdatePicker.js"></script>
 		<div id="content">
 			<div id="content-header">
 			    <div id="breadcrumb"> ${currMenu.pMenuName }
@@ -118,8 +118,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</div>
 </body>
 
-<link rel="stylesheet" href="${ctx }/resources/zTree_s/css/metroStyle/metroStyle.css" type="text/css">
-<script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
-<script type="text/javascript" src="${ctx }/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
+<link rel="stylesheet" href="${ctx }/shenhai/resources/zTree_s/css/metroStyle/metroStyle.css" type="text/css">
+<script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
+<script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
 <script src="${ctx }/shenhai/js/beach/beachImport_init.js"></script>
 </html>

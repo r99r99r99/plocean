@@ -54,7 +54,7 @@
 	
 
 	
-	<script src="<%=path %>/resources/jquery-2.1.3.min.js"></script>
+	<script src="<%=path %>/shenhai/resources/jquery-2.1.3.min.js"></script>
 	
 	<script language="javascript">
 	$(function(){

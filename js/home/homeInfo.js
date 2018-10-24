@@ -226,7 +226,6 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
        			 url:'getDatas4Firstpage.do',
        			 params:sparams})
        			 .success(function(res){
-       				console.log(res);
        				var statuss = res.deviceStatusList;
        				
        				 //展示该站点的实时水质
@@ -239,7 +238,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
        					}
        				}
        				
-  					var srcpath = "page-images/watertype"+station.waterType+"/"+waterStandard.standard_grade+"grade.png";
+  					var srcpath = "shenhai/images/watertype"+station.waterType+"/"+waterStandard.standard_grade+"grade.png";
   					$("#gradeImg").attr('src',srcpath);
   					$scope.stand = waterStandard;
        				//展示设备状态列表 
@@ -356,7 +355,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 							           anchorYUnits: 'pixels',
 							           /*anchorXUnits: 'fraction',
 							           anchorYUnits: 'pixels',*/
-							            src: 'images/station/icon/'+feature.get('type')
+							            src: 'shenhai/images/station/icon/'+feature.get('type')
 							          })
 					        })
 					        return icon;
@@ -446,7 +445,6 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 			 url:'showStat.do',
 			 params:sparams})
 			 .success(function(res){
-				 console.log(res);
 				 loadPie(res);
 			 });
    };

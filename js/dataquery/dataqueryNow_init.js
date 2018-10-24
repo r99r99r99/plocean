@@ -137,8 +137,9 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 						 airContent.push('<div class="widget-box" style="height:300px;background-color:#f9f9f9">');
 							 airContent.push('<div class="widget-header">');
 							 	airContent.push('<h5 class="widget-title">');
-								airContent.push('<i class="icon-table"></i>');
 								airContent.push(device.name);
+								airContent.push('&nbsp;&nbsp;&nbsp;');
+								airContent.push('<i class="ace-icon glyphicon glyphicon-time"></i>');
 								airContent.push('<span id="collectTime_');
 								airContent.push(device.id);
 								airContent.push('"></span>');

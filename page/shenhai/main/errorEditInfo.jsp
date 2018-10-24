@@ -15,10 +15,10 @@
 	<body ng-app="myApp" ng-controller="customersCtrl"> 
 		<%@ include file="../common/top.jsp" %>
 		<!-- angularjs select tree -->
-		<link rel="stylesheet" href="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
-		<script type="text/javascript" src="${ctx }/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
-		<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.css" />
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.js"></script>
+		<script type="text/javascript" src="${ctx }/shenhai/resources/angular-select-tree/angular-multi-select-tree-0.1.0.tpl.js"></script>
+		<script src="${ctx }/shenhai/resources/My97DatePicker/WdatePicker.js"></script>
 		<script src="${ctx }/shenhai/resources/assets/js/ajaxfileupload.js"></script>
 		<script type="text/javascript" src="${ctx }/shenhai/js/main/errorEditInfo.js"></script>
 		<div class="main-container" id="main-container">

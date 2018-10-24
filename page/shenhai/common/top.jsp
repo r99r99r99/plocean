@@ -10,54 +10,54 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 		<link href="${ctx }/shenhai/css/common/select.css" rel="stylesheet" type="text/css" />
-		<%-- <link href="${ctx }/resources/mstp/css/bootstrap.min.css" rel="stylesheet" />
-		<link href="${ctx }/resources/mstp/css/fullcalendar.css" rel="stylesheet" />
-		<link rel="stylesheet" href="${ctx }/resources/mstp/css/maruti-style.css" />
-		<link rel="stylesheet" href="${ctx }/resources/mstp/css/jquery.gritter.css" />
-		<link rel="stylesheet" href="${ctx }/resources/mstp/css/maruti-media.css" class="skin-color" /> --%>
+		<%-- <link href="${ctx }/shenhai/resources/mstp/css/bootstrap.min.css" rel="stylesheet" />
+		<link href="${ctx }/shenhai/resources/mstp/css/fullcalendar.css" rel="stylesheet" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/mstp/css/maruti-style.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/mstp/css/jquery.gritter.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/mstp/css/maruti-media.css" class="skin-color" /> --%>
 		
 		<!-- 引入ACE框架部分 -->
 		<!-- bootstrap & fontawesome -->
-		<link rel="stylesheet" href="${ctx }/resources/assets/css/bootstrap.min.css" />
-		<link rel="stylesheet" href="${ctx }/resources/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/bootstrap.min.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/font-awesome/4.5.0/css/font-awesome.min.css" />
 
 		<!-- page specific plugin styles -->
 
 		<!-- text fonts -->
-		<link rel="stylesheet" href="${ctx }/resources/assets/css/fonts.googleapis.com.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/fonts.googleapis.com.css" />
 
 		<!-- ace styles -->
-		<link rel="stylesheet" href="${ctx }/resources/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/ace.min.css" class="ace-main-stylesheet" id="main-ace-style" />
 
 		<!--[if lte IE 9]>
-			<link rel="stylesheet" href="${ctx }/resources/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
+			<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/ace-part2.min.css" class="ace-main-stylesheet" />
 		<![endif]-->
-		<link rel="stylesheet" href="${ctx }/resources/assets/css/ace-skins.min.css" />
-		<link rel="stylesheet" href="${ctx }/resources/assets/css/ace-rtl.min.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/ace-skins.min.css" />
+		<link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/ace-rtl.min.css" />
 
 		<!--[if lte IE 9]>
-		  <link rel="stylesheet" href="${ctx }/resources/assets/css/ace-ie.min.css" />
+		  <link rel="stylesheet" href="${ctx }/shenhai/resources/assets/css/ace-ie.min.css" />
 		<![endif]-->
 
 		<!-- inline styles related to this page -->
 
 		<!-- ace settings handler -->
-		<script src="${ctx }/resources/assets/js/ace-extra.min.js"></script>
+		<script src="${ctx }/shenhai/resources/assets/js/ace-extra.min.js"></script>
 
 		<!-- HTML5shiv and Respond.js for IE8 to support HTML5 elements and media queries -->
 
 		<!--[if lte IE 8]>
-		<script src="${ctx }/resources/assets/js/html5shiv.min.js"></script>
-		<script src="${ctx }/resources/assets/js/respond.min.js"></script>
+		<script src="${ctx }/shenhai/resources/assets/js/html5shiv.min.js"></script>
+		<script src="${ctx }/shenhai/resources/assets/js/respond.min.js"></script>
 		<![endif]-->
 		
 		<!-- 引入ACE框架部分结束 -->
 		
 		<!--[if !IE]> -->
-		<script src="${ctx }/resources/jquery-2.1.3.min.js"></script>
+		<script src="${ctx }/shenhai/resources/jquery-2.1.3.min.js"></script>
 		<!-- <![endif]-->
 		<!--[if IE]>
-		<script src="${ctx }/resources/assets/js/jquery-1.11.3.min.js"></script>
+		<script src="${ctx }/shenhai/resources/assets/js/jquery-1.11.3.min.js"></script>
 		<![endif]-->
 
 
@@ -65,26 +65,26 @@
 		
 		
 		<!-- angularjs -->
-		<script src="${ctx }/resources/angular-1.5.0/angular.js"></script>
-		<script src="${ctx }/resources/angular-1.5.0/angular-animate.js"></script>
-		<script src="${ctx }/resources/angular-1.5.0/angular-touch.js"></script>
+		<script src="${ctx }/shenhai/resources/angular-1.5.0/angular.js"></script>
+		<script src="${ctx }/shenhai/resources/angular-1.5.0/angular-animate.js"></script>
+		<script src="${ctx }/shenhai/resources/angular-1.5.0/angular-touch.js"></script>
 		
 		<!-- ngdialog -->
-		<script src="${ctx }/resources/ngdialog/ngDialog.js"></script>
-		<link href="${ctx }/resources/ngdialog/ngDialog.css" rel="stylesheet" type="text/css" />
-		<link href="${ctx }/resources/ngdialog/ngDialog-theme-default.css" rel="stylesheet" type="text/css" />
+		<script src="${ctx }/shenhai/resources/ngdialog/ngDialog.js"></script>
+		<link href="${ctx }/shenhai/resources/ngdialog/ngDialog.css" rel="stylesheet" type="text/css" />
+		<link href="${ctx }/shenhai/resources/ngdialog/ngDialog-theme-default.css" rel="stylesheet" type="text/css" />
 		
-		<script src="${ctx }/resources/ui-bootstrap-tpls/ui-bootstrap-tpls.js"></script>
-		<%-- <script src="${ctx }/resources/ng-grid/ng-grid.debug.js"></script>
-		<script src="${ctx }/resources/ng-grid/ng-grid-layout.js"></script> --%>
-		<script src="${ctx }/resources/ui-grid/ui-grid.js"></script>
-		<script src="${ctx }/resources/ui-grid/csv.js"></script>
-		<script src="${ctx }/resources/ui-grid/pdfmake.js"></script>
-		<script src="${ctx }/resources/ui-grid/vfs_fonts.js"></script>
-		<link href="${ctx }/resources/ui-grid/ui-grid.css" rel="stylesheet">
-		<%-- <script src="${ctx }/resources/ng-grid/ng-grid.min.js"></script>
-		<link href="${ctx }/resources/ng-grid/ng-grid.min.css" rel="stylesheet"> 
-		<script src="${ctx }/resources/ng-grid/ng-grid-csv-export.js"></script>	--%>
+		<script src="${ctx }/shenhai/resources/ui-bootstrap-tpls/ui-bootstrap-tpls.js"></script>
+		<%-- <script src="${ctx }/shenhai/resources/ng-grid/ng-grid.debug.js"></script>
+		<script src="${ctx }/shenhai/resources/ng-grid/ng-grid-layout.js"></script> --%>
+		<script src="${ctx }/shenhai/resources/ui-grid/ui-grid.js"></script>
+		<script src="${ctx }/shenhai/resources/ui-grid/csv.js"></script>
+		<script src="${ctx }/shenhai/resources/ui-grid/pdfmake.js"></script>
+		<script src="${ctx }/shenhai/resources/ui-grid/vfs_fonts.js"></script>
+		<link href="${ctx }/shenhai/resources/ui-grid/ui-grid.css" rel="stylesheet">
+		<%-- <script src="${ctx }/shenhai/resources/ng-grid/ng-grid.min.js"></script>
+		<link href="${ctx }/shenhai/resources/ng-grid/ng-grid.min.css" rel="stylesheet"> 
+		<script src="${ctx }/shenhai/resources/ng-grid/ng-grid-csv-export.js"></script>	--%>
 		
 <script type="text/javascript">
 <%
@@ -165,7 +165,7 @@ function showDepart(){
 						</li>
 						<li class="light-blue dropdown-modal">
 							<a data-toggle="dropdown" href="#" class="dropdown-toggle">
-								<img class="nav-user-photo" src="${ctx }/resources/assets/images/avatars/user.jpg" alt="Jason's Photo" />
+								<img class="nav-user-photo" src="${ctx }/shenhai/resources/assets/images/avatars/user.jpg" alt="Jason's Photo" />
 								<span class="user-info">
 									<small>欢迎,</small>
 									${user.realName }
@@ -212,28 +212,28 @@ function showDepart(){
 	</div>	
 <!--头部结束-->
 
-<%-- <script src="${ctx }/resources/mstp/js/excanvas.min.js"></script> 
-<script src="${ctx }/resources/mstp/js/jquery.ui.custom.js"></script> 
-<script src="${ctx }/resources/mstp/js/bootstrap.min.js"></script> 
-<script src="${ctx }/resources/mstp/js/jquery.peity.min.js"></script> 
-<script src="${ctx }/resources/mstp/js/jquery.gritter.min.js"></script> 
-<script src="${ctx }/resources/mstp/js/fullcalendar.min.js"></script> 
-<script src="${ctx }/resources/mstp/js/maruti.js"></script> 
-<script src="${ctx }/resources/mstp/js/maruti.dashboard.js"></script> 
-<script src="${ctx }/resources/mstp/js/maruti.chat.js"></script>  --%>
+<%-- <script src="${ctx }/shenhai/resources/mstp/js/excanvas.min.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/jquery.ui.custom.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/bootstrap.min.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/jquery.peity.min.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/jquery.gritter.min.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/fullcalendar.min.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/maruti.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/maruti.dashboard.js"></script> 
+<script src="${ctx }/shenhai/resources/mstp/js/maruti.chat.js"></script>  --%>
 
 
 <!-- basic scripts -->
 		<script type="text/javascript">
-			if('ontouchstart' in document.documentElement) document.write("<script src='${ctx }/resources/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
+			if('ontouchstart' in document.documentElement) document.write("<script src='${ctx }/shenhai/resources/assets/js/jquery.mobile.custom.min.js'>"+"<"+"/script>");
 		</script>
-		<script src="${ctx }/resources/assets/js/bootstrap.min.js"></script>
+		<script src="${ctx }/shenhai/resources/assets/js/bootstrap.min.js"></script>
 	
 		
 
 		<!-- ace scripts -->
-		<script src="${ctx }/resources/assets/js/ace-elements.min.js"></script>
-		<script src="${ctx }/resources/assets/js/ace.min.js"></script>
+		<script src="${ctx }/shenhai/resources/assets/js/ace-elements.min.js"></script>
+		<script src="${ctx }/shenhai/resources/assets/js/ace.min.js"></script>
 
 		<!-- inline scripts related to this page -->
 		
@@ -270,7 +270,6 @@ function showDepart(){
 	      dataType: "json", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
 	      ContentType: "application/json; charset=utf-8",
 	      success: function(data) {
-	    	  console.log(data);
 	    	  $("#noReadNoticeId").html(data.length)
 	      },
 	      error: function(msg) {

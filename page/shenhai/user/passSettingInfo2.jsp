@@ -91,6 +91,6 @@
 		</div>
 			
 </body>
-<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
+<script src="${ctx }/shenhai/resources/My97DatePicker/WdatePicker.js"></script>
 <script type="text/javascript" src="${ctx }/shenhai/js/user/passSettingInfo.js"></script>
 </html>

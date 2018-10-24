@@ -22,10 +22,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<%@ include file="../common/textAngular.jsp" %>
 		
 		<!-- page specific plugin styles -->
-		<script src="${ctx }/resources/My97DatePicker/WdatePicker.js"></script>
+		<script src="${ctx }/shenhai/resources/My97DatePicker/WdatePicker.js"></script>
 		<script type="text/javascript" src="${ctx }/shenhai/js/user/userSettingInfo.js"></script>
-		<script src="${ctx }/resources/angular-file-upload-master/dist/angular-file-upload.js"></script>
-		<script src="${ctx }/resources/angular-file-upload-master/dist/directives.js"></script>
+		<script src="${ctx }/shenhai/resources/angular-file-upload-master/dist/angular-file-upload.js"></script>
+		<script src="${ctx }/shenhai/resources/angular-file-upload-master/dist/directives.js"></script>
 		<div class="main-container ace-save-state" id="main-container">
 			<%@ include file="../common/left.jsp" %>
 			
