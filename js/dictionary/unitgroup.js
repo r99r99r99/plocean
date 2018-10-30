@@ -68,7 +68,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     $scope.query=function(){
     	$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showGroupList.do',
 			 params:pData})
@@ -134,7 +134,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     		var param = $scope.group;
     		//如果执行修改操作时
     		if(mtype==2){
-    			 $http({
+    			 $http({  responseType:'json',
         	   		 method:'POST',
         				 url:'saveGroupChange.do',
         				 params:param,
@@ -145,7 +145,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
         	   	     }); 	
     		}
     		if(mtype==1){
-    			$http({
+    			$http({  responseType:'json',
        	   		 method:'POST',
        				 url:'saveNewGroup.do',
        				 params:param,

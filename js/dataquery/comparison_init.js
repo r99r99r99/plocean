@@ -15,7 +15,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 	//$scope.title = "";
 	//查询条件初始化
 	var stationParam = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'comparison_init.do',
 		 params:stationParam})
@@ -50,7 +50,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 		var param = {
 				stationIds:stationIds
 		};
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'getIndicatorTreeByStations.do',
 			 params:param})
@@ -89,7 +89,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 				beginDate:$scope.u.beginDate,
 				endDate:$scope.u.endDate
 		};
-		 $http({
+		 $http({  responseType:'json',
 			 method:'POST',
 			 url:'getComparisonResult.do',
 			 params:queryParam}) 

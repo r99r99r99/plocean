@@ -98,7 +98,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	
 	//初始化查询时间
 	var sData = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'initMainEditInfo.do',
 		 params:sData})
@@ -111,7 +111,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		var sData = {
 			id:$scope.u.stationId	
 		};
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'getDevices4Station.do',
 			 params:sData})
@@ -129,7 +129,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 				stationId:$scope.u.stationId,
 				deviceId:$scope.u.deviceId
 		};
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'getAiotMainConfigListByStationDevice.do',
 			 params:aData})
@@ -207,7 +207,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	$scope.u.beginTime= beginTime;
     	$scope.u.endTime = endTime;
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showMainEditList.do',
 			 params:pData})
@@ -267,7 +267,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     		var sData = {
     				id:station.id
     		};
-    		$http({
+    		$http({  responseType:'json',
        		 method:'POST',
        		 url:'getMainFilesByMainId.do',
        		 params:sData})
@@ -284,7 +284,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	
     	//初始化弹出页面的站点列表
     	var sData = "";
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
     		 url:'getStationByUser.do',
     		 params:sData})
@@ -303,7 +303,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     		var sData = {
     				id:$scope.m.stationId	
     			};
-    			$http({
+    			$http({  responseType:'json',
     				 method:'POST',
     				 url:'getDevices4Station.do',
     				 params:sData})
@@ -324,7 +324,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     				stationId:$scope.m.stationId,
     				deviceId:$scope.m.deviceId
     		};
-    		$http({
+    		$http({  responseType:'json',
     			 method:'POST',
     			 url:'getAiotMainConfigListByStationDevice.do',
     			 params:aData})
@@ -344,7 +344,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	var pdata = {
     			parentCode:'0014'
     	};
-    	$http({
+    	$http({  responseType:'json',
 			 method:'POST',
 			 url:'getPublicList.do',
 			 params:pdata})

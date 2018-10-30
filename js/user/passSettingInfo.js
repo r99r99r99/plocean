@@ -12,7 +12,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 	
 	$scope.save = function(){
 		var sparams = $scope.user;
-		$http({
+		$http({  responseType:'json',
 		   	 method:'POST',
 			 url:'saveUserPassword.do',
 			 params:sparams,

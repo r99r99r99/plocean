@@ -46,13 +46,11 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 	//展示出左侧的站点列表
 	var t = $("#mtree");
 		//读取组织树下的站点列表
-		$.ajax({
-	      url: 'getStationList4ZTree.do', //url  action是方法的名称
-	      data: '',
-	      type: 'POST',
-	      dataType: "json", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
-	      ContentType: "application/json; charset=utf-8",
-	      success: function(data) {
+	$http({  responseType:'json',
+		 method:'POST',
+		 url:'getStationList4ZTree.do',
+		 params:''})
+		 .success(function(data){
 	    	  var first_id;
 	    	  for(var i in data){
 	    		  var treeNode = data[i];
@@ -68,11 +66,8 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 	    	  stationid = first_id.substring(1,first_id.length);
 	    	  $scope.u.stationId = stationid;
 	    	  $scope.updateStationStatus();
-	      },
-	      error: function(msg) {
-	         
-	      }
-		}); 
+			 
+		 });
 	function beforeClick(treeId, treeNode, clickFlag) {
 		if(treeNode.id.substring(0,1)!="S"){
 			treeNode.click=false;
@@ -130,7 +125,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 		//根据站点ID,获得站点下属的参数列表
 		var mparam = {id:$scope.u.stationId};
 		var levelparam = {parentCode:'0017'};
-		$http({
+		$http({  responseType:'json',
 	   		 method:'POST',
 				 url:'getPublicList.do',
 				 params:levelparam,
@@ -140,7 +135,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 			    	 $scope.typelist = response;
 			    	//查询条件初始化
 			    	var stationParam = "";
-			    	$http({
+			    	$http({  responseType:'json',
 			    		 method:'POST',
 			    		 url:'statisreportavg_init.do',
 			    		 params:mparam})
@@ -229,7 +224,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 		};
 		console.log(queryParam);
 			$(".scbtn").attr('disabled',"true");
-			 $http({
+			 $http({  responseType:'json',
 				 method:'POST',
 				 url:'statisreportavg_show.do',
 				 params:queryParam}) 

@@ -58,7 +58,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		var mparam = {
 				stationIds:selectNode
 		};
-		$http({
+		$http({  responseType:'json',
    		 method:'POST',
    		 url:'getStationDeviceStatus.do',
    		 params:mparam})

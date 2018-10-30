@@ -21,7 +21,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	
 	//生成站点列表
 	var sData = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getStationByUser.do',
 		 params:sData})
@@ -35,7 +35,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 			 $scope.query=function(){
 				 $(".scbtn").attr('disabled',"true");
 			    	var pData = $scope.u; 
-			    	$http({
+			    	$http({  responseType:'json',
 			    		 method:'POST',
 						 url:'showWarnSetting.do',
 						 params:pData})
@@ -105,7 +105,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		if(confirm("确定要删除选中的记录吗?")){
 			$(".scbtn").attr('disabled',"true");
 			var dData ={ids:ids}; 
-			$http({
+			$http({  responseType:'json',
 		   		 method:'POST',
 					 url:'deleWarnSetting.do',
 					 params:dData,
@@ -146,7 +146,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	
     	//获得有效的站点列表
     	var mData = "";
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
     		 url:'getStationByUser.do',
     		 params:mData})
@@ -165,7 +165,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     		var iData = {
     				id:$scope.warn.wpId
     		};
-    		$http({
+    		$http({  responseType:'json',
        		 method:'POST',
        		 url:'getIndicatorsByStation.do',
        		 params:iData})
@@ -197,7 +197,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     		console.log(saveparam);
     		//如果执行修改操作时
     		if(mtype==2){
-    			 $http({
+    			 $http({  responseType:'json',
         	   		 method:'POST',
         				 url:'saveWarnChange.do',
         				 params:saveparam,
@@ -208,7 +208,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
         	   	     }); 	
     		}
     		if(mtype==1){
-    			$http({
+    			$http({  responseType:'json',
        	   		 method:'POST',
        				 url:'saveNewWarn.do',
        				 params:saveparam,

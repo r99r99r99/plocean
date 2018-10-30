@@ -70,7 +70,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 		if(confirm("确定要删除选中的记录吗?")){
 			$(".scbtn").attr('disabled',"true");
 			var dData ={id:ids}; 
-			$http({
+			$http({  responseType:'json',
 		   		 method:'POST',
 					 url:'deleYuzhi.do',
 					 params:dData,
@@ -88,7 +88,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     $scope.query=function(){
     	$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showYuZhi.do',
 			 params:pData})
@@ -136,7 +136,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     	//生成状态列表
     	var pData={};
     	//获得站点列表
-    	$http({
+    	$http({  responseType:'json',
    		 method:'POST',
 			 url:'getAllStation.do',
 			 params:pData})
@@ -167,7 +167,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     		var param = $scope.type;
     		//如果执行修改操作时
     		if(mtype==2){
-    			 $http({
+    			 $http({  responseType:'json',
         	   		 method:'POST',
         				 url:'saveYuzhi.do',
         				 params:param,
@@ -178,7 +178,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
         	   	     }); 	
     		}
     		if(mtype==1){
-    			$http({
+    			$http({  responseType:'json',
        	   		 method:'POST',
        				 url:'saveNewYuzhi.do',
        				 params:param,

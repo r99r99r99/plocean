@@ -47,7 +47,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	
 	//初始化查询条件的开始时间以及结束时间
 	var stationParam = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'init_notice.do',
 		 params:stationParam})
@@ -58,36 +58,31 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	     });
 	
 	$scope.showStationTree=function(){
+		
 		//展示出左侧的站点列表
 		var t = $("#mtree");
 			//读取组织树下的站点列表
-			$.ajax({
-		      url: 'getStationList4ZTree.do', //url  action是方法的名称
-		      data: '',
-		      type: 'POST',
-		      dataType: "json", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
-		      ContentType: "application/json; charset=utf-8",
-		      success: function(data) {
-		    	  var first_id;
-		    	  for(var i in data){
-		    		  var treeNode = data[i];
-		    		  var id = treeNode.id;
-		    		  if(treeNode.id.substring(0,1)!="R"){
-		    			  first_id = treeNode.id;
-		    			  break;
-		    		  }
-		    	  }
-		    	  t = $.fn.zTree.init(t, setting, data);
-		    	  var zTree = $.fn.zTree.getZTreeObj("mtree");
-		    	  zTree.selectNode(zTree.getNodeByParam("id", first_id));
-		    	  stationid = first_id.substring(1,first_id.length);
-		    	  $scope.u.stationId = stationid;
-		    	  $scope.query();
-		      },
-		      error: function(msg) {
-		         
-		      }
-			}); 
+		$http({  responseType:'json',
+			method:'POST',
+			url:'getStationList4ZTree.do',
+			params:''})
+			.success(function(data){
+				var first_id;
+				for(var i in data){
+					var treeNode = data[i];
+					var id = treeNode.id;
+					if(treeNode.id.substring(0,1)!="R"){
+						first_id = treeNode.id;
+						break;
+					}
+				}
+				t = $.fn.zTree.init(t, setting, data);
+				var zTree = $.fn.zTree.getZTreeObj("mtree");
+				zTree.selectNode(zTree.getNodeByParam("id", first_id));
+				stationid = first_id.substring(1,first_id.length);
+				$scope.u.stationId = stationid;
+				$scope.query();
+			});
 	};
 	
 		function zTreeOnClick(event, treeId, treeNode) {
@@ -167,7 +162,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 			if(confirm("是否确定删除标题为\""+$scope.d.title+"\"的通知？")){
 				var dparam = $scope.d;
 				console.log(dparam);
-				$http({
+				$http({  responseType:'json',
 		    		 method:'POST',
 					 url:'deleNotice.do',
 					 params:dparam})
@@ -201,7 +196,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 			$scope.u.endTime = endTime;
 			
 	    	var pData = $scope.u;
-	    	$http({
+	    	$http({  responseType:'json',
 	    		 method:'POST',
 				 url:'showNoticeList.do',
 				 params:pData})
@@ -259,7 +254,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	    	$scope.save = function(){
 	    		var param = $scope.m;
 	    		if(mtype==1){
-	    			$http({
+	    			$http({  responseType:'json',
 	       	   		 method:'POST',
 	       				 url:'saveNoticeUp.do',
 	       				 params:param,

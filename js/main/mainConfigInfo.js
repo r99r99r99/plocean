@@ -56,7 +56,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     $scope.query=function(){
     	$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showAiotMainConfig.do',
 			 params:pData})
@@ -81,7 +81,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		   return;
 	   }
 	   var dparam = station;
-	   $http({
+	   $http({  responseType:'json',
   		 method:'POST',
 			 url:'deleMainConfig.do',
 			 params:dparam})
@@ -130,7 +130,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     			url="saveChangeMainConfig.do";
     		}
     		var sparam = $scope.m;
-    		$http({
+    		$http({  responseType:'json',
        		 method:'POST',
    			 url:url,
    			 params:sparam})

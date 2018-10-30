@@ -15,7 +15,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$timeout,$modal)
 	var dparam = {
 			domainId:11
 	};
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getDomainLevelListByDomain.do',
 		 params:dparam})
@@ -136,7 +136,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$timeout,$modal)
 				statType:collectType,
 				stationId:stationId
 		};
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'showBeachStat.do',
 			 params:zparams})

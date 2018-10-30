@@ -11,7 +11,7 @@ myApp.controller('customersCtrl',function($scope,$http,$timeout,$modal){
 	
 	
 	var mm = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getCurrStation.do',
 		 params:mm})

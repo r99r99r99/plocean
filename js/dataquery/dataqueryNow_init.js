@@ -69,13 +69,11 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	//展示出左侧的站点列表
 	var t = $("#mtree");
 		//读取组织树下的站点列表
-		$.ajax({
-	      url: 'getStationList4ZTree.do', //url  action是方法的名称
-	      data: '',
-	      type: 'POST',
-	      dataType: "json", //可以是text，如果用text，返回的结果为字符串；如果需要json格式的，可是设置为json
-	      ContentType: "application/json; charset=utf-8",
-	      success: function(data) {
+		$http({  responseType:'json',
+		 method:'POST',
+		 url:'getStationList4ZTree.do',
+		 params:''})
+		 .success(function(data){
 	    	  var first_id;
 	    	  for(var i in data){
 	    		  var treeNode = data[i];
@@ -90,11 +88,8 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	    	  zTree.selectNode(zTree.getNodeByParam("id", first_id));
 	    	  stationid = first_id.substring(1,first_id.length);
 	    	  $scope.updateStationStatus();
-	      },
-	      error: function(msg) {
-	         
-	      }
-		}); 
+			 
+		 });
 		function zTreeOnClick(event, treeId, treeNode) {
 			if(treeNode.id!=null){
 				selectNode = treeNode.id;
@@ -124,7 +119,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 			var zparams = {
 					id:stationid
 			};
-			$http({
+			$http({  responseType:'json',
 				 method:'POST',
 				 url:'getDevicesIndicators4Now.do',
 				 params:zparams})
@@ -180,7 +175,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 			var zparams = {
 					id:stationid
 			};
-			$http({
+			$http({  responseType:'json',
 				 method:'POST',
 				 url:'getlastdataNow.do',
 				 params:zparams})

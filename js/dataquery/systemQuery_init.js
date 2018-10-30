@@ -44,7 +44,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	
 	//初始化查询条件的开始时间以及结束时间
 	var stationParam = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'dataquery_info.do',
 		 params:stationParam})
@@ -108,7 +108,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 		$scope.updateStationStatus=function(stationid){
 				//根据站点得到下属的设备的列表
 				var dparam = {id:stationid};
-				$http({
+				$http({  responseType:'json',
 					 method:'POST',
 					 url:'getDevices4Station4System.do',
 					 params:dparam}) 
@@ -182,7 +182,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	    			beginDate:beginTime,
 	    			endDate:endTime,
 	    			stationId:stationid};
-	    	$http({
+	    	$http({  responseType:'json',
 	    		 method:'POST',
 				 url:'showSystemQueryInfo.do',
 				 params:pData})

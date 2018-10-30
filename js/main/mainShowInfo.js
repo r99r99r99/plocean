@@ -15,7 +15,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	
 	//初始化站点列表以及查询时间
 	var sData = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'initMainEditInfo.do',
 		 params:sData})
@@ -46,7 +46,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	$scope.u.beginTime= beginTime;
     	$scope.u.endTime = endTime;
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showMainEditList.do',
 			 params:pData})
@@ -143,7 +143,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     		var sData = {
     				id:station.id
     		};
-    		$http({
+    		$http({  responseType:'json',
        		 method:'POST',
        		 url:'getMainFilesByMainId.do',
        		 params:sData})
@@ -159,7 +159,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	}
     	//初始化弹出页面的站点列表
     	var sData = "";
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
     		 url:'getStationByUser.do',
     		 params:sData})
@@ -187,7 +187,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     					id:$scope.m.id
     			};
     		}
-    		$http({
+    		$http({  responseType:'json',
     			method:'POST',
     			url:'getDeviceIndicatorTree4Main.do',
     			params:statpam,

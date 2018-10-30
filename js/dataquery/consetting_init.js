@@ -14,7 +14,7 @@ myApp.controller('customersCtrl',function($scope,$http){
     
 	//初始化站点列表
 	var dparam ="";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getStationByUser.do',
 		 params:dparam})
@@ -29,7 +29,7 @@ myApp.controller('customersCtrl',function($scope,$http){
 	$scope.query=function(){
 		$(".scbtn").attr('disabled',"true");
 		var qparam = $scope.u;
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'getMouldByStationId.do',
 			 params:qparam})
@@ -41,7 +41,7 @@ myApp.controller('customersCtrl',function($scope,$http){
 	//保存当前站点的水质评价模板
 	$scope.save=function(){
 		var sparam = $scope.u;
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'saveMouldSetting.do',
 			 params:sparam})

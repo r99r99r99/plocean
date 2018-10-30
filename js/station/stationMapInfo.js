@@ -13,7 +13,7 @@ myApp.controller('customersCtrl',function($scope,$http,$timeout,$modal){
 	
 	var mm = "";
 	//读取当前站点的配置信息
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getCurrStation.do',
 		 params:mm})

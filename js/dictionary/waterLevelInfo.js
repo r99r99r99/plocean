@@ -54,7 +54,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     $scope.query=function(){
     	$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'getStandardList.do',
 			 params:pData})
@@ -105,7 +105,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 		if(confirm("确定要删除选中的记录吗?")){
 			$(".scbtn").attr('disabled',"true");
 			var pData ={ids:ids}; 
-			$http({
+			$http({  responseType:'json',
 		   		 method:'POST',
 					 url:'deleWaterQulity.do',
 					 params:pData,
@@ -127,7 +127,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     	
     	//获得参数列表,并初始化
     	var indiparam = {isactive:1};
-    	$http({
+    	$http({  responseType:'json',
 	   		 method:'POST',
 				 url:'getIndicatorList.do',
 				 params:indiparam,
@@ -142,7 +142,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     	
     	//获得水质等级名称列表,并初始化
     	var levelparam = {parentCode:'0007'};
-    	$http({
+    	$http({  responseType:'json',
 	   		 method:'POST',
 				 url:'getPublicList.do',
 				 params:levelparam,
@@ -157,7 +157,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     	
     	//获得水质类型列表,并初始化
     	var typeParam = {parentCode:'0005'};
-    	$http({
+    	$http({  responseType:'json',
 	   		 method:'POST',
 				 url:'getPublicList.do',
 				 params:typeParam,
@@ -182,7 +182,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     		var param = $scope.group;
     		//如果执行修改操作时
     		if(mtype==2){
-    			 $http({
+    			 $http({  responseType:'json',
         	   		 method:'POST',
         				 url:'saveQualityChange.do',
         				 params:param,
@@ -193,7 +193,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
         	   	     }); 	
     		}
     		if(mtype==1){
-    			$http({
+    			$http({  responseType:'json',
        	   		 method:'POST',
        				 url:'saveNewQuality.do',
        				 params:param,

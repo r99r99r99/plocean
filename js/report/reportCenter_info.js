@@ -144,7 +144,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	
 	//查询条件初始化
 	$scope.reportCenter_init=function(){
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'reportCenter_init.do',
 			 params:''})

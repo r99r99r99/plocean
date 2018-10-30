@@ -55,7 +55,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,FileUploa
 		    }];
 		 	//如果没有图标上传
 		 	if($scope.uploader.queue.length<1){
-		 		$http({
+		 		$http({  responseType:'json',
 				   	 method:'POST',
 					 url:url,
 					 params:$scope.user,
@@ -75,7 +75,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,FileUploa
 	};
 	//初始化人员信息
 	var param = "";
-	$http({
+	$http({  responseType:'json',
 	   	 method:'POST',
 		 url:'getUserNow.do',
 		 params:param,

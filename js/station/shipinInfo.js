@@ -34,7 +34,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	$scope.u.deviceId = $scope.deviceList[2].id;
 	//初始化站点列表以及查询时间
 	var sData = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'initMainEditInfo.do',
 		 params:sData})
@@ -95,7 +95,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     $scope.query=function(){
     	var queryParam = "";
 		 
-		 $http({
+		 $http({  responseType:'json',
 			 method:'POST',
 			 url:'show_shipin.do',
 			 params:queryParam}) 

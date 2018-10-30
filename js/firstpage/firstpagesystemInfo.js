@@ -22,7 +22,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	
 	//初始化查询条件
 	var sData = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getStationByUser.do',
 		 params:sData})
@@ -39,7 +39,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	$scope.query=function(){
 		$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showSystemModelList.do',
 			 params:pData})
@@ -120,7 +120,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		if(confirm("确定要删除选中的配置吗?")){
 			$(".scbtn").attr('disabled',"true");
 			var dData ={id:id}; 
-			$http({
+			$http({  responseType:'json',
 		   		 method:'POST',
 					 url:'deleSystemModel.do',
 					 params:dData,
@@ -142,7 +142,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	
     	//得到权限下的参数列表
     	var mData = "";
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
     		 url:'getStationByUser.do',
     		 params:mData})
@@ -175,7 +175,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	var dDate={
 				id:3
 		};
-		$http({
+		$http({  responseType:'json',
    		 method:'POST',
    		 url:'getSystemModelList.do',
    		 params:dDate})
@@ -201,7 +201,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     					orderCode:$scope.orderCode				
     			};
         		console.log(saveparam);
-        		$http({
+        		$http({  responseType:'json',
         	   		 method:'POST',
         				 url:'addSystemModel.do',
         				 params:saveparam,
@@ -220,7 +220,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     					type:$scope.type,				
     					orderCode:$scope.orderCode	    					
     			};
-        	  $http({
+        	  $http({  responseType:'json',
         	   		 method:'POST',
         				 url:'updateSystemModel.do',
         				 params:saveparam,

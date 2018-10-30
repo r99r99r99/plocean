@@ -38,7 +38,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     $scope.query=function(){
     	$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showUserList.do',
 			 params:pData})
@@ -133,7 +133,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     	
     	var sparam="";
     	$scope.showComList4Users=function(){
-    		$http({
+    		$http({  responseType:'json',
     	   		 method:'POST',
     				 url:'showComList4Users.do',
     				 params:sparam})
@@ -155,7 +155,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     	var pData = {}; 
     	
     	//获得职位的列表
-    	$http({
+    	$http({  responseType:'json',
    		 method:'POST',
 			 url:'getPositionList.do',
 			 params:pData})
@@ -190,7 +190,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
     		var param = $scope.user;
     		//如果执行修改操作时
     		if(mtype==2){
-    			 $http({
+    			 $http({  responseType:'json',
         	   		 method:'POST',
         				 url:'saveUserChange.do',
         				 params:param,
@@ -201,7 +201,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
         	   	     }); 	
     		}
     		if(mtype==1){
-    			$http({
+    			$http({  responseType:'json',
        	   		 method:'POST',
        				 url:'saveNewUser.do',
        				 params:param,

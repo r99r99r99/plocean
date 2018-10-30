@@ -75,7 +75,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 		};
 		function getConfigure(){
 			var mapData={};
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'getMapConfigure.do',
 			 params:mapData})
@@ -178,7 +178,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 		$scope.initDevice=function(){
 		var stationParam = "";
 		//初始化查询条件
-		$http({	
+		$http({  responseType:'json',	
 			 method:'POST',
 			 url:'trajectory_init.do',
 			 params:stationParam})
@@ -233,7 +233,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 			map.removeLayer(vectorLayer2);
 			map.removeLayer(vectorLayer3);
 			map.removeLayer(vectorLayer4);
-			$http({
+			$http({  responseType:'json',
 				 method:'POST',
 				 url:'getTrajectory.do',
 				 params:queryParam}) 
@@ -284,7 +284,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 					 }
 				 });
 			
-			$http({
+			$http({  responseType:'json',
 				 method:'POST',
 				 url:'getTrajectory_t.do',
 				 params:queryParam}) 
@@ -383,7 +383,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 	    $scope.updateStationStatus=function(isOnn){
 	    	var sparam = "";
 	    	sparam={stationid:selectNode,isOn:isOnn};
-	    	$http({
+	    	$http({  responseType:'json',
 	   		 method:'POST',
 	   		 url:'getTrajectory.do',
 	   		 params:sparam})
@@ -538,7 +538,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal){
 				var param = {
 						importString:$scope.data
 				};
-				$http({
+				$http({  responseType:'json',
 					 method:'POST',
 					 url:'saveImportCsvData.do',
 					 params:param}) 

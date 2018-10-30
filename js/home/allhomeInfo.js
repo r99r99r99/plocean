@@ -121,7 +121,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		
 		function getConfigure(){
 			var mapData={};
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'getMapConfigure.do',
 			 params:mapData})
@@ -251,7 +251,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	}else if(selectNode.substring(0, 1)=="S"){  //当点击的是站点层级时
     		sparam={id:selectNode.substring(1, selectNode.length)};
     	}
-    	$http({
+    	$http({  responseType:'json',
    		 method:'POST',
    		 url:'getStationStatus.do',
    		 params:sparam})
@@ -337,7 +337,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 				endTime:uendTime,
 				stationid:stationId
 		};
-    	$http({
+    	$http({  responseType:'json',
 			 method:'POST',
 			 url:'getTrajectory.do',
 			 params:queryParam}) 
@@ -394,7 +394,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     $scope.showStationDetail=function(stationId,clicks){
     	//通过站点ID,获得站点通讯的详细信息
     	var param = {stationId:stationId};
-    	 $http({
+    	 $http({  responseType:'json',
  			 method:'POST',
  			 url:'showStationStatusByStationId.do',
  			 params:param})

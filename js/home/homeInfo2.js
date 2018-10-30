@@ -30,7 +30,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	//读取地图的配置信息,并根据配置信息加载地图
 	$scope.getMapConfig=function(){
 		var mapData = "";
-		$http({
+		$http({  responseType:'json',
 			method:'POST',
 			url:'getMapConfigure.do',
 			params:mapData})
@@ -143,7 +143,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     $scope.showStationDetail=function(station){
     	//当选中该站点时,得到该站点的水质类型配置
     	var dp = {id:station.stationId};
-    	$http({
+    	$http({  responseType:'json',
    		 method:'POST',
    		 url:'getWaterStandardConfigListByStationId.do',
    		 params:dp})
@@ -185,7 +185,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     			 stationId:station.stationId
     	 }
     	 //$scope.showStatLine(station);
-    		$http({
+    		$http({  responseType:'json',
     			 method:'POST',
     			 url:'getDatas4Firstpage.do',
     			 params:sparams})
@@ -282,7 +282,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
    $scope.updateStationStatus=function(){
 	   //更新地图上站点的图标以及状态
 	   var mData = "";
-	   $http({
+	   $http({  responseType:'json',
 			 method:'POST',
 			 url:'getStationStatusList.do',
 			 params:mData})
@@ -334,7 +334,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 							var spam={
 									id:feature.H.stationId
 							};
-							 $http({
+							 $http({  responseType:'json',
 					 			 method:'POST',
 					 			 url:'getStationStatusById.do',
 					 			 params:spam})
@@ -427,7 +427,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 				beginDate:beginDate,
 				endDate:endDate
 		};
-	   $http({
+	   $http({  responseType:'json',
 			 method:'POST',
 			 url:'showStat4First.do',
 			 params:sparams})

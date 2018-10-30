@@ -20,7 +20,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	var dparam = {
 			domainId:1
 	};
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getDomainLevelListByDomain.do',
 		 params:dparam})
@@ -64,7 +64,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	//读取地图的配置信息,并根据配置信息加载地图
 	$scope.getMapConfig=function(){
 		var mapData = "";
-		$http({
+		$http({  responseType:'json',
 			method:'POST',
 			url:'getMapConfigure.do',
 			params:mapData})
@@ -158,7 +158,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	$scope.updateStationStatus=function(){
 		   //更新地图上站点的图标以及状态
 		   var mData = {id:1};
-		   $http({
+		   $http({  responseType:'json',
 				 method:'POST',
 				 url:'getStationStatusList4Demain.do',
 				 params:mData})
@@ -212,7 +212,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 								var spam={
 										id:feature.H.stationId
 								};
-								 $http({
+								 $http({  responseType:'json',
 						 			 method:'POST',
 						 			 url:'getStationStatusById.do',
 						 			 params:spam})
@@ -252,7 +252,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		//查询该站点的海水浴场等级
 		$scope.getBeachLevel(station);
 		//查询该站点的水质统计
-		$http({
+		$http({  responseType:'json',
 			 method:'POST',
 			 url:'showRedStat.do',
 			 params:sparams})
@@ -301,7 +301,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 		 var sparams = {
 	   			 id:station.id
 	   	 }
-		 $http({
+		 $http({  responseType:'json',
    			 method:'POST',
    			 url:'getRedDetailByStation.do',
    			 params:sparams})
@@ -315,7 +315,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
    	 var sparams = {
    			 stationId:station.id
    	 }
-   		$http({
+   		$http({  responseType:'json',
    			 method:'POST',
    			 url:'getDatas4Firstpage.do',
    			 params:sparams})

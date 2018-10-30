@@ -19,7 +19,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 	$scope.beach={};
 	$scope.s={};
 	$scope.timeInit=function(){
-		$http({
+		$http({  responseType:'json',
 			method:'POST',
 			url:'beachImport_info.do',
 			params:''})
@@ -29,7 +29,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 			});
 	}
 	//获得海水浴场所有的配置表
-	$http({
+	$http({  responseType:'json',
 			method:'POST',
 			url:'getAllBeachConfig.do',
 			params:''})
@@ -122,7 +122,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 		};
 		$scope.showBeachData=function(){
 			var param = $scope.s;
-			 $http({
+			 $http({  responseType:'json',
 		  			method:'POST',
 		  			url:'getBeachData4Station.do',
 		  			params:param})
@@ -140,7 +140,7 @@ myApp.controller('customersCtrl',function($scope,$sce,$http,ngDialog,$modal,$tim
 				param[key]=$scope.beach[key].data;
 			}
 			console.log(param);
-			$http({
+			$http({  responseType:'json',
 	  			method:'POST',
 	  			url:'saveBeachImportData.do',
 	  			params:param})

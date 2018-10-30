@@ -25,7 +25,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	var pdata = {
 			parentCode:'0016'
 	};
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'getPublicList.do',
 		 params:pdata})
@@ -37,7 +37,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
 	
 	//初始化站点列表以及查询时间
 	var sData = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'init_errorEdit.do',
 		 params:sData})
@@ -86,7 +86,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     $scope.query=function(){
     	$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showErrorEditList.do',
 			 params:pData})
@@ -144,7 +144,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	
     	//初始化弹出页面的站点列表
     	var sData = "";
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
     		 url:'getStationByUser.do',
     		 params:sData})
@@ -163,7 +163,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     	var pdata = {
     			parentCode:'0016'
     	};
-    	$http({
+    	$http({  responseType:'json',
 			 method:'POST',
 			 url:'getPublicList.do',
 			 params:pdata})
@@ -190,7 +190,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     					id:$scope.m.id
     			};
     		}
-    		$http({
+    		$http({  responseType:'json',
     			method:'POST',
     			url:'getDeviceList4Error.do',
     			params:statpam,
@@ -224,7 +224,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
     		var param = $scope.m;
     		//如果执行修改操作时
     		if(mtype==2){
-    			 $http({
+    			 $http({  responseType:'json',
         	   		 method:'POST',
         				 url:'saveChangeErrorTenance.do',
         				 params:param,
@@ -235,7 +235,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,$timeout)
         	   	     }); 	
     		}
     		if(mtype==1){
-    			$http({
+    			$http({  responseType:'json',
        	   		 method:'POST',
        				 url:'saveNewErrorTenance.do',
        				 params:param,

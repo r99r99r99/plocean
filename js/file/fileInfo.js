@@ -32,7 +32,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,FileUploa
 	
 	//初始化查询条件
 	var sData = "";
-	$http({
+	$http({  responseType:'json',
 		 method:'POST',
 		 url:'init_file.do',
 		 params:sData})
@@ -75,7 +75,7 @@ myApp.controller('customersCtrl',function($scope,$http,ngDialog,$modal,FileUploa
     $scope.query=function(){
     	$(".scbtn").attr('disabled',"true");
     	var pData = $scope.u; 
-    	$http({
+    	$http({  responseType:'json',
     		 method:'POST',
 			 url:'showFileList.do',
 			 params:pData})
