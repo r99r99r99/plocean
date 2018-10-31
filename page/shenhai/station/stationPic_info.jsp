@@ -14,7 +14,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<title>${system.systemName }</title>
 		<meta name="keywords" content="入海污染源" />
 		<!-- basic styles -->
-		
 	</head>
 
 	<body class="no-skin" ng-app="myApp" ng-controller="customersCtrl">
@@ -77,8 +76,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 										         <div class="widget-body nopadding">
 										         	<ul class="ace-thumbnails clearfix">
 														<li class="col-xs-2" ng-repeat="pic in picList" style="border: 0px">
+															
 															<a href="{{pic.src }}" title="{{pic.origName }}" data-rel="colorbox" class="cboxElement">
 																<img width="150" height="150" alt="150x150" src="{{pic.src }}">
+																
 															</a>
 														</li>
 													</ul>
@@ -102,5 +103,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.core-3.5.js"></script>
 <script type="text/javascript" src="${ctx }/shenhai/resources/zTree_s/js/jquery.ztree.excheck-3.5.js"></script>
 <script src="${ctx }/shenhai/js/station/stationPic_info.js"></script>
+<script type="text/javascript">
+ /* $.colorbox({
+    reposition: false,      // ?
+    //top: "20px",
+    iframe:true,
+    width: "80%",
+    height: "auto",
+    inline: true,
+    href: "#download-APP-colorbox"
+});  */
+ $(".cboxElement").colorbox({
+	 reposition: false, 
+	 iframe:true,
+	 width: "80%",
+	 height: "auto",
+	 inline: true,
+	 href: "#download-APP-colorbox"
+ }); 
+</script>
 </body>
 </html>
